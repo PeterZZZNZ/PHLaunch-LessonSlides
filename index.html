@@ -387,600 +387,883 @@
   .hour-bar-wrap { flex: 1; background: var(--navy-light); border-radius: 4px; height: 28px; position: relative; overflow: hidden; }
   .hour-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 600; color: white; }
   .hour-row-label { font-size: 11px; color: var(--gray-mid); width: 80px; flex-shrink: 0; }
+
+  /* ─── LANGUAGE TOGGLE ─── */
+  .lang-toggle {
+    position: fixed; top: 20px; right: 24px; z-index: 300;
+    display: flex; align-items: center;
+    background: var(--navy-mid); border: 1px solid var(--navy-light);
+    border-radius: 20px; padding: 3px; gap: 2px;
+  }
+  .lang-btn {
+    padding: 5px 14px; border-radius: 16px; border: none;
+    background: transparent; cursor: pointer;
+    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 1px; color: var(--gray-mid);
+    transition: all 0.2s;
+  }
+  .lang-btn.active { background: var(--orange); color: var(--white); }
+  .lang-btn:hover:not(.active) { color: var(--gray-light); }
+
+  /* ─── BILINGUAL CONTENT ─── */
+  .lang-en { display: contents; }
+  .lang-zh { display: none; }
+  body.zh .lang-en { display: none; }
+  body.zh .lang-zh { display: contents; }
+  .sn-zh { display: none; }
+  body.zh .sn-en { display: none; }
+  body.zh .sn-zh { display: inline; }
 </style>
 </head>
 <body>
 
 <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
-<div class="slide-counter"><span id="cur">1</span> / 17</div>
+<div class="slide-counter"><span id="cur">1</span> / 18</div>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" id="btn-zh" onclick="setLang('zh')">中文</button>
+</div>
 
 <div class="deck" id="deck">
 
   <!-- ══ SLIDE 1 ══ -->
-  <div class="slide slide-center active" data-notes="This lesson is a practical playbook — not theory. By the end, students will know exactly what to do before, during, and after a Product Hunt launch. Set the expectation: we're going to move fast and cover everything that matters.">
-    <div class="title-badge">Lesson</div>
-    <h1 style="max-width:680px">Launching Your<br><span class="orange-accent">B2C SaaS</span><br>on Product Hunt</h1>
-    <p class="subtitle" style="font-size:17px; margin-top:20px; max-width:520px">A practical playbook grounded in how PH actually works</p>
-    <div style="margin-top:48px; display:flex; gap:32px; align-items:center; justify-content:center;">
-      <div style="text-align:center">
-        <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">17</div>
-        <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">Slides</div>
+  <div class="slide slide-center active" data-notes="This lesson is a practical playbook — not theory. By the end, students will know exactly what to do before, during, and after a Product Hunt launch. Set the expectation: we're going to move fast and cover everything that matters." data-notes-zh="本课是实战手册，不是理论。结束时，学员将清楚地知道 PH 发布前、中、后该做什么。设定预期：我们会快节奏地覆盖所有重要内容。">
+    <div class="lang-en">
+      <div class="title-badge">Lesson</div>
+      <h1 style="max-width:680px">Launching Your<br><span class="orange-accent">B2C SaaS</span><br>on Product Hunt</h1>
+      <p class="subtitle" style="font-size:17px; margin-top:20px; max-width:520px">A practical playbook grounded in how PH actually works</p>
+      <div style="margin-top:48px; display:flex; gap:32px; align-items:center; justify-content:center;">
+        <div style="text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">18</div>
+          <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">Slides</div>
+        </div>
+        <div style="width:1px; height:40px; background:var(--navy-light)"></div>
+        <div style="text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">60</div>
+          <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">Minutes</div>
+        </div>
+        <div style="width:1px; height:40px; background:var(--navy-light)"></div>
+        <div style="text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">0</div>
+          <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">Fluff</div>
+        </div>
       </div>
-      <div style="width:1px; height:40px; background:var(--navy-light)"></div>
-      <div style="text-align:center">
-        <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">60</div>
-        <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">Minutes</div>
-      </div>
-      <div style="width:1px; height:40px; background:var(--navy-light)"></div>
-      <div style="text-align:center">
-        <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">0</div>
-        <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">Fluff</div>
+    </div>
+    <div class="lang-zh">
+      <div class="title-badge">课程</div>
+      <h1 style="max-width:700px">在 Product Hunt 上<br>发布你的 <span class="orange-accent">B2C SaaS</span></h1>
+      <p class="subtitle" style="font-size:17px; margin-top:20px; max-width:520px">一份基于 PH 真实运作方式的实战手册</p>
+      <div style="margin-top:48px; display:flex; gap:32px; align-items:center; justify-content:center;">
+        <div style="text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">18</div>
+          <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">张幻灯片</div>
+        </div>
+        <div style="width:1px; height:40px; background:var(--navy-light)"></div>
+        <div style="text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">60</div>
+          <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">分钟</div>
+        </div>
+        <div style="width:1px; height:40px; background:var(--navy-light)"></div>
+        <div style="text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--orange)">0</div>
+          <div style="font-size:11px; color:var(--gray-mid); margin-top:4px; letter-spacing:1px; text-transform:uppercase">废话</div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ══ SLIDE 2 ══ -->
-  <div class="slide" data-notes="Start by grounding students in what Product Hunt actually is — many founders have heard of it but don't understand the mechanics. It's a daily-ranked discovery feed, not a marketplace or an ad platform. Then pivot to why it matters: the backlink is permanent, the audience self-selects for early adoption, and the social proof carries outside PH. Stress that it's a catalyst, not a growth channel on its own.">
-    <div class="slide-header"><span class="slide-num">02 — What &amp; Why</span><div class="slide-num-line"></div></div>
-    <h2>What Is Product Hunt —<br>and <span class="orange-accent">Why Does It Matter?</span></h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px">
-      <div>
-        <div class="eyebrow">What it is</div>
-        <ul class="bullets" style="margin-top:0">
-          <li>A <strong>daily-ranked product discovery feed</strong> — new products compete each day for top spots</li>
-          <li>Home to <strong>700K+ monthly early adopters</strong> — people who actively seek new tools</li>
-          <li>Run by a community that votes, comments, and decides what surfaces</li>
-          <li><span class="dim">Not a marketplace, not an ad platform — a <strong>credibility signal</strong></span></li>
-        </ul>
-      </div>
-      <div>
-        <div class="eyebrow">Why it matters</div>
-        <ul class="bullets" style="margin-top:0">
-          <li><strong>Fast distribution</strong> to a self-selected audience of people who adopt new tools</li>
-          <li><strong>Permanent backlink</strong> from a DA 91 domain — SEO value that lasts years</li>
-          <li><strong>Social proof</strong> that travels — investors, press, and partners recognize a strong ranking</li>
-          <li><span class="dim"><strong>Not</strong> a standalone growth channel — it amplifies everything else</span></li>
-        </ul>
+  <div class="slide" data-notes="This is your credibility moment — keep it brief and confident. You're not boasting; you're establishing that what follows comes from direct experience, not theory. Mention that January 6th is a competitive Tuesday, and that #16 with 91 upvotes as an indie founder with no prior PH following is a meaningful result. Then move on — the lesson is about them, not you." data-notes-zh="这是你的公信力时刻——简短有力。你不是在炫耀；你是在建立后续内容来自真实经验的基础。提到1月6日是竞争激烈的周二，没有任何PH粉丝基础就达到第16名、91个点赞是有意义的成绩。然后继续——本课的主角是他们，不是你。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">02 — About This Lesson</span><span class="sn-zh">02 — 关于本课</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>This Playbook Comes from<br><span class="orange-accent">Doing It</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:28px; align-items:start">
+        <div>
+          <div class="eyebrow">My Launch — January 6, 2026</div>
+          <div style="margin-top:20px; display:flex; flex-direction:column; gap:16px">
+            <div style="display:flex; align-items:center; gap:16px; padding:16px 20px; background:var(--navy-mid); border-radius:10px; border:1px solid var(--navy-light)">
+              <div style="font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--orange); line-height:1">#16</div>
+              <div style="font-size:13px; color:var(--gray-light); line-height:1.5">Day rank on a <strong style="color:var(--white)">busy Tuesday</strong> —<br>one of PH's highest-traffic days</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:16px; padding:16px 20px; background:var(--navy-mid); border-radius:10px; border:1px solid var(--navy-light)">
+              <div style="font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--orange); line-height:1">91</div>
+              <div style="font-size:13px; color:var(--gray-light); line-height:1.5">Upvotes as an indie founder<br>with <strong style="color:var(--white)">no prior PH following</strong></div>
+            </div>
+          </div>
+          <div style="margin-top:20px; padding:16px 20px; background:rgba(255,107,53,0.07); border:1px solid rgba(255,107,53,0.25); border-radius:10px">
+            <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--white); margin-bottom:4px">Dirac</div>
+            <div style="font-size:13px; color:var(--gray-light); font-style:italic">"Start your day with full context, zero tab-hopping"</div>
+          </div>
+          <p style="margin-top:18px; font-size:13px; color:var(--gray-mid); line-height:1.6">Everything in this lesson is grounded in what actually worked — and what I'd do differently next time.</p>
+        </div>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--navy-light); box-shadow:0 8px 32px rgba(0,0,0,0.4)">
+          <img src="dirac-ph.png" alt="Dirac on Product Hunt" style="width:100%; display:block; object-fit:cover; object-position:top" />
+        </div>
       </div>
     </div>
-
-    <div class="stat-row" style="margin-top:20px">
-      <div class="stat-box">
-        <div class="stat-num">700K+</div>
-        <div class="stat-label">Monthly active<br>early adopters</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">DA 91</div>
-        <div class="stat-label">Domain Authority —<br>permanent SEO backlink</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">1 day</div>
-        <div class="stat-label">Window to reach<br>thousands of relevant buyers</div>
+    <div class="lang-zh">
+      <h2>本手册来自<br><span class="orange-accent">亲身实践</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:28px; align-items:start">
+        <div>
+          <div class="eyebrow">我的发布 — 2026年1月6日</div>
+          <div style="margin-top:20px; display:flex; flex-direction:column; gap:16px">
+            <div style="display:flex; align-items:center; gap:16px; padding:16px 20px; background:var(--navy-mid); border-radius:10px; border:1px solid var(--navy-light)">
+              <div style="font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--orange); line-height:1">#16</div>
+              <div style="font-size:13px; color:var(--gray-light); line-height:1.5">竞争激烈的<strong style="color:var(--white)">周二</strong>日排名 —<br>PH 流量最高的日子之一</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:16px; padding:16px 20px; background:var(--navy-mid); border-radius:10px; border:1px solid var(--navy-light)">
+              <div style="font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--orange); line-height:1">91</div>
+              <div style="font-size:13px; color:var(--gray-light); line-height:1.5">作为独立开发者的点赞数<br><strong style="color:var(--white)">没有任何 PH 粉丝基础</strong></div>
+            </div>
+          </div>
+          <div style="margin-top:20px; padding:16px 20px; background:rgba(255,107,53,0.07); border:1px solid rgba(255,107,53,0.25); border-radius:10px">
+            <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--white); margin-bottom:4px">Dirac</div>
+            <div style="font-size:13px; color:var(--gray-light); font-style:italic">"开启你的一天，掌握全局，零切换标签"</div>
+          </div>
+          <p style="margin-top:18px; font-size:13px; color:var(--gray-mid); line-height:1.6">本课所有内容均源于亲身实践——以及我下次会改进的地方。</p>
+        </div>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--navy-light); box-shadow:0 8px 32px rgba(0,0,0,0.4)">
+          <img src="dirac-ph.png" alt="Dirac on Product Hunt" style="width:100%; display:block; object-fit:cover; object-position:top" />
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ══ SLIDE 3 ══ -->
-  <div class="slide" data-notes="The reset at 12:01am PST is the single most important mechanic to understand. Every product starts at zero and competes only against that day's launches. The algorithm doesn't just count votes — it measures velocity, comment depth, and engagement quality, so a surge of low-quality upvotes from a vote ring will actually hurt rather than help.">
-    <div class="slide-header"><span class="slide-num">03 — How PH Works</span><div class="slide-num-line"></div></div>
-    <h2>The <span class="orange-accent">Mechanics</span> of Product Hunt</h2>
-
-    <div class="cards cards-3" style="margin-top:28px">
-      <div class="card accent">
-        <div class="card-icon">🔄</div>
-        <h3>Daily Reset</h3>
-        <p>Every product starts at zero. The clock resets at 12:01am PST — you compete only with that day's launches.</p>
+  <div class="slide" data-notes="Start by grounding students in what Product Hunt actually is — many founders have heard of it but don't understand the mechanics. It's a daily-ranked discovery feed, not a marketplace or an ad platform. Then pivot to why it matters: the backlink is permanent, the audience self-selects for early adoption, and the social proof carries outside PH. Stress that it's a catalyst, not a growth channel on its own." data-notes-zh="先让学员对 Product Hunt 有真实认知——很多创始人听说过但不了解机制。它是每日排名的发现信息流，不是市场或广告平台。然后转到为何重要：外链是永久的，受众自我筛选，社会证明可跨渠道传播。强调它是催化剂，而非独立增长渠道。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">03 — What &amp; Why</span><span class="sn-zh">03 — 是什么与为何</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>What Is Product Hunt —<br>and <span class="orange-accent">Why Does It Matter?</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px">
+        <div>
+          <div class="eyebrow">What it is</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>A <strong>daily-ranked product discovery feed</strong> — new products compete each day for top spots</li>
+            <li>Home to <strong>700K+ monthly early adopters</strong> — people who actively seek new tools</li>
+            <li>Run by a community that votes, comments, and decides what surfaces</li>
+            <li><span class="dim">Not a marketplace, not an ad platform — a <strong>credibility signal</strong></span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">Why it matters</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>Fast distribution</strong> to a self-selected audience of people who adopt new tools</li>
+            <li><strong>Permanent backlink</strong> from a DA 91 domain — SEO value that lasts years</li>
+            <li><strong>Social proof</strong> that travels — investors, press, and partners recognize a strong ranking</li>
+            <li><span class="dim"><strong>Not</strong> a standalone growth channel — it amplifies everything else</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>Velocity Signals</h3>
-        <p>Early upvote speed matters more than raw totals. A strong first-hour burst tells the algorithm you're worth surfacing.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">💬</div>
-        <h3>Comment Quality</h3>
-        <p>Thoughtful comments outweigh numbers. Engagement depth is a ranking signal — drive conversations, not just votes.</p>
+      <div class="stat-row" style="margin-top:20px">
+        <div class="stat-box"><div class="stat-num">700K+</div><div class="stat-label">Monthly active<br>early adopters</div></div>
+        <div class="stat-box"><div class="stat-num">DA 91</div><div class="stat-label">Domain Authority —<br>permanent SEO backlink</div></div>
+        <div class="stat-box"><div class="stat-num">1 day</div><div class="stat-label">Window to reach<br>thousands of relevant buyers</div></div>
       </div>
     </div>
-
-    <div class="highlight-box">
-      <strong>Key insight:</strong> The algorithm rewards genuine engagement. Manufactured upvote spikes are detected and discounted — sometimes penalized.
+    <div class="lang-zh">
+      <h2>Product Hunt 是什么——<br>以及<span class="orange-accent">为何重要？</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px">
+        <div>
+          <div class="eyebrow">它是什么</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>每日排名的产品发现信息流</strong> — 新产品每天竞争前排位置</li>
+            <li>拥有 <strong>70万+月活早期用户</strong> — 主动寻找新工具的人群</li>
+            <li>由社区投票、评论，共同决定哪些产品脱颖而出</li>
+            <li><span class="dim">不是市场，不是广告平台 — 而是一个<strong>公信力信号</strong></span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">为何重要</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>快速触达</strong>自我筛选的早期用户群体</li>
+            <li>来自 DA 91 域名的<strong>永久外链</strong> — 多年持续的 SEO 价值</li>
+            <li><strong>社会证明</strong>可跨渠道传播 — 投资人、媒体认可高排名</li>
+            <li><span class="dim"><strong>不是</strong>独立增长渠道 — 它放大一切其他努力</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="stat-row" style="margin-top:20px">
+        <div class="stat-box"><div class="stat-num">700K+</div><div class="stat-label">月活<br>早期用户</div></div>
+        <div class="stat-box"><div class="stat-num">DA 91</div><div class="stat-label">域名权重 —<br>永久 SEO 外链</div></div>
+        <div class="stat-box"><div class="stat-num">1天</div><div class="stat-label">触达数千<br>精准潜在用户的窗口期</div></div>
+      </div>
     </div>
   </div>
 
   <!-- ══ SLIDE 4 ══ -->
-  <div class="slide" data-notes="Many founders confuse the Hunter and Maker roles. The Hunter submits the product — they used to be a major distribution lever when top hunters had large followings. The Maker controls the launch page and is the one engaging with commenters. Followers are your audience: community members who vote, comment, and share. Understanding these roles prevents the common mistake of waiting passively for a hunter to 'do the work.'">
-    <div class="slide-header"><span class="slide-num">04 — Three Roles</span><div class="slide-num-line"></div></div>
-    <h2>Who Does <span class="orange-accent">What</span> on Launch Day</h2>
-
-    <div class="roles-grid">
-      <div class="role-card hunter">
-        <div class="role-icon">🎯</div>
-        <div class="role-name">Hunter</div>
-        <div class="role-desc">Submits the product to PH. Can be you or an established community member with a following.</div>
-        <span class="role-task">Submits the listing</span>
+  <div class="slide" data-notes="The reset at 12:01am PST is the single most important mechanic to understand. Every product starts at zero and competes only against that day's launches. The algorithm doesn't just count votes — it measures velocity, comment depth, and engagement quality, so a surge of low-quality upvotes from a vote ring will actually hurt rather than help." data-notes-zh="PST凌晨12:01的重置是最重要的机制。每个产品从零开始，只与当天发布的产品竞争。算法不只计票——它衡量速度、评论深度和互动质量，一波低质量的刷票反而会有害。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">04 — How PH Works</span><span class="sn-zh">04 — 运作机制</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>The <span class="orange-accent">Mechanics</span> of Product Hunt</h2>
+      <div class="cards cards-3" style="margin-top:28px">
+        <div class="card accent"><div class="card-icon">🔄</div><h3>Daily Reset</h3><p>Every product starts at zero. The clock resets at 12:01am PST — you compete only with that day's launches.</p></div>
+        <div class="card"><div class="card-icon">⚡</div><h3>Velocity Signals</h3><p>Early upvote speed matters more than raw totals. A strong first-hour burst tells the algorithm you're worth surfacing.</p></div>
+        <div class="card"><div class="card-icon">💬</div><h3>Comment Quality</h3><p>Thoughtful comments outweigh numbers. Engagement depth is a ranking signal — drive conversations, not just votes.</p></div>
       </div>
-      <div class="role-card maker">
-        <div class="role-icon">🛠</div>
-        <div class="role-name">Maker</div>
-        <div class="role-desc">Builds the product and owns launch day. Posts the first comment, responds to all feedback, drives engagement.</div>
-        <span class="role-task">Owns the conversation</span>
-      </div>
-      <div class="role-card follower">
-        <div class="role-icon">🙌</div>
-        <div class="role-name">Follower</div>
-        <div class="role-desc">Community member who votes, comments, and shares. Your network and PH's organic audience.</div>
-        <span class="role-task">Votes &amp; comments</span>
-      </div>
+      <div class="highlight-box"><strong>Key insight:</strong> The algorithm rewards genuine engagement. Manufactured upvote spikes are detected and discounted — sometimes penalized.</div>
     </div>
-
-    <div class="highlight-box" style="margin-top:20px">
-      <strong>Remember:</strong> As a maker, the entire launch execution is your responsibility — hunters submit, you run the show.
+    <div class="lang-zh">
+      <h2>Product Hunt 的<span class="orange-accent">运作机制</span></h2>
+      <div class="cards cards-3" style="margin-top:28px">
+        <div class="card accent"><div class="card-icon">🔄</div><h3>每日重置</h3><p>每个产品从零开始。时钟在 PST 凌晨 12:01 重置 — 只与当天发布的产品竞争。</p></div>
+        <div class="card"><div class="card-icon">⚡</div><h3>速度信号</h3><p>早期点赞速度比总量更重要。强劲的开局让算法认为你值得推广。</p></div>
+        <div class="card"><div class="card-icon">💬</div><h3>评论质量</h3><p>有深度的评论比数量更有价值。互动深度是排名信号 — 要引发对话，不只是点赞。</p></div>
+      </div>
+      <div class="highlight-box"><strong>关键洞察：</strong>算法奖励真实互动。批量刷票会被识别并降权 — 有时甚至直接处罚。</div>
     </div>
   </div>
 
   <!-- ══ SLIDE 5 ══ -->
-  <div class="slide" data-notes="The prep phase is where launches are won or lost. Founders who skip straight to launch day are harvesting from a field they never planted. The 2–3 week window gives enough time to finalize the product, build the notify-me list, reach out to a potential hunter, and warm up your network. Launch day itself should feel like hitting 'publish' on a plan already in motion.">
-    <div class="slide-header"><span class="slide-num">05 — Pre-Launch Timeline</span><div class="slide-num-line"></div></div>
-    <h2><span class="orange-accent">2–3 Weeks</span> of Prep, One Day to Harvest</h2>
-
-    <div class="timeline" style="margin-top:36px">
-      <div class="tl-item">
-        <div class="tl-dot">W1</div>
-        <div class="tl-label">Week 1</div>
-        <div class="tl-sub">Finalize &amp; deploy product. Set up Upcoming page. Contact hunter.</div>
+  <div class="slide" data-notes="Many founders confuse the Hunter and Maker roles. The Hunter submits the product — they used to be a major distribution lever when top hunters had large followings. The Maker controls the launch page and is the one engaging with commenters. Followers are your audience: community members who vote, comment, and share. Understanding these roles prevents the common mistake of waiting passively for a hunter to 'do the work.'" data-notes-zh="很多创始人混淆了 Hunter 和 Maker 的角色。Hunter 提交产品——过去是重要的分发杠杆。Maker 控制发布页面并与评论者互动。Follower 是你的受众：投票、评论、分享的社区成员。理解这些角色能防止被动等待 Hunter '做工作'的常见错误。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">05 — Three Roles</span><span class="sn-zh">05 — 三种角色</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Who Does <span class="orange-accent">What</span> on Launch Day</h2>
+      <div class="roles-grid">
+        <div class="role-card hunter"><div class="role-icon">🎯</div><div class="role-name">Hunter</div><div class="role-desc">Submits the product to PH. Can be you or an established community member with a following.</div><span class="role-task">Submits the listing</span></div>
+        <div class="role-card maker"><div class="role-icon">🛠</div><div class="role-name">Maker</div><div class="role-desc">Builds the product and owns launch day. Posts the first comment, responds to all feedback, drives engagement.</div><span class="role-task">Owns the conversation</span></div>
+        <div class="role-card follower"><div class="role-icon">🙌</div><div class="role-name">Follower</div><div class="role-desc">Community member who votes, comments, and shares. Your network and PH's organic audience.</div><span class="role-task">Votes &amp; comments</span></div>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot">W2</div>
-        <div class="tl-label">Week 2</div>
-        <div class="tl-sub">Grow notify-me list. Finalize assets &amp; listing copy. Warm up communities, newsletter, Twitter.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot">W3</div>
-        <div class="tl-label">Week 3 (optional)</div>
-        <div class="tl-sub">Draft outreach messages. Brief inner circle. Final checks.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="background:var(--orange); color:white">🚀</div>
-        <div class="tl-label" style="color:var(--orange)">Launch Day</div>
-        <div class="tl-sub" style="color:var(--orange-light)">Execute. Engage. Respond to every comment.</div>
-      </div>
+      <div class="highlight-box" style="margin-top:20px"><strong>Remember:</strong> As a maker, the entire launch execution is your responsibility — hunters submit, you run the show.</div>
     </div>
-
-    <ul class="bullets" style="margin-top:32px">
-      <li><strong>Product must be live and stable</strong> before the clock starts — PH traffic is unforgiving</li>
-      <li>Start <strong>2–3 weeks out</strong> — anything less is a rushed launch</li>
-      <li>Launch day is the <strong>harvest</strong> of prep work done earlier</li>
-    </ul>
+    <div class="lang-zh">
+      <h2>发布日<span class="orange-accent">各司其职</span></h2>
+      <div class="roles-grid">
+        <div class="role-card hunter"><div class="role-icon">🎯</div><div class="role-name">猎手（Hunter）</div><div class="role-desc">将产品提交到 PH。可以是你本人，也可以是有影响力的社区成员。</div><span class="role-task">提交产品页</span></div>
+        <div class="role-card maker"><div class="role-icon">🛠</div><div class="role-name">创建者（Maker）</div><div class="role-desc">开发产品并主导发布日。发布首条评论，回复所有反馈，驱动互动。</div><span class="role-task">主导全程对话</span></div>
+        <div class="role-card follower"><div class="role-icon">🙌</div><div class="role-name">关注者（Follower）</div><div class="role-desc">投票、评论、分享的社区成员 — 你的网络和 PH 的自然受众。</div><span class="role-task">投票与评论</span></div>
+      </div>
+      <div class="highlight-box" style="margin-top:20px"><strong>记住：</strong>作为 Maker，整个发布执行都是你的责任 — Hunter 只负责提交，你负责运营全局。</div>
+    </div>
   </div>
 
   <!-- ══ SLIDE 6 ══ -->
-  <div class="slide" data-notes="The thumbnail and tagline are the first things people see in the ranked feed. If they don't stop scrolling, nothing else matters. The tagline should answer 'what does this do for me?' in under 60 characters — not what the product is, but what the user gets. The thumbnail should be readable at 60×60px; test it by shrinking it down in your browser before submission.">
-    <div class="slide-header"><span class="slide-num">06 — Name, Tagline, Thumbnail</span><div class="slide-num-line"></div></div>
-    <h2>Your <span class="orange-accent">First Impression</span> in the Feed</h2>
-
-    <div class="cards cards-2" style="margin-top:24px">
-      <div style="display:flex; flex-direction:column; gap:16px">
-        <div class="card accent">
-          <div class="card-icon">🏷</div>
-          <h3>Tagline Rules</h3>
-          <p>Benefit-led, not feature-led. Under 60 characters. Answers: "What do I get?" — not "What is it?"</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🖼</div>
-          <h3>Thumbnail Rules</h3>
-          <p>Bold, high-contrast, readable at small size. Test at 60×60px. No walls of text. One clear visual hook.</p>
-        </div>
+  <div class="slide" data-notes="The prep phase is where launches are won or lost. Founders who skip straight to launch day are harvesting from a field they never planted. The 2–3 week window gives enough time to finalize the product, build the notify-me list, reach out to a potential hunter, and warm up your network. Launch day itself should feel like hitting 'publish' on a plan already in motion." data-notes-zh="准备阶段决定发布的成败。跳过直接到发布日的创始人是在收割从未播种的田地。2–3 周的窗口足够完成产品、建立通知名单、联系 Hunter 并预热网络。发布日本身应该感觉像在执行一个已经运转中的计划。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">06 — Pre-Launch Timeline</span><span class="sn-zh">06 — 发布前时间线</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2><span class="orange-accent">2–3 Weeks</span> of Prep, One Day to Harvest</h2>
+      <div class="timeline" style="margin-top:36px">
+        <div class="tl-item"><div class="tl-dot">W1</div><div class="tl-label">Week 1</div><div class="tl-sub">Finalize &amp; deploy product. Set up Upcoming page. Contact hunter.</div></div>
+        <div class="tl-item"><div class="tl-dot">W2</div><div class="tl-label">Week 2</div><div class="tl-sub">Grow notify-me list. Finalize assets &amp; listing copy. Warm up communities, newsletter, Twitter.</div></div>
+        <div class="tl-item"><div class="tl-dot">W3</div><div class="tl-label">Week 3 (optional)</div><div class="tl-sub">Draft outreach messages. Brief inner circle. Final checks.</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--orange); color:white">🚀</div><div class="tl-label" style="color:var(--orange)">Launch Day</div><div class="tl-sub" style="color:var(--orange-light)">Execute. Engage. Respond to every comment.</div></div>
       </div>
-      <div style="background:var(--navy-mid); border:1px solid var(--navy-light); border-radius:12px; padding:24px">
-        <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:16px">Tagline Examples</div>
-        <div style="margin-bottom:12px">
-          <div style="font-size:11px; color:#ff6b6b; margin-bottom:4px">✗ Feature-led (weak)</div>
-          <div style="font-size:13px; color:var(--gray-light); font-style:italic; padding:8px 12px; background:rgba(255,107,107,0.06); border-radius:6px">"AI-powered document management platform"</div>
-        </div>
-        <div>
-          <div style="font-size:11px; color:var(--accent-teal); margin-bottom:4px">✓ Benefit-led (strong)</div>
-          <div style="font-size:13px; color:var(--cream); padding:8px 12px; background:rgba(0,194,168,0.06); border-radius:6px; border-left:3px solid var(--accent-teal)">"Find any doc in 5 seconds — guaranteed"</div>
-        </div>
-        <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--navy-light)">
-          <div style="font-size:11px; color:var(--gray-mid)">Character limit: <span style="color:var(--orange); font-weight:700">60 chars max</span></div>
-        </div>
+      <ul class="bullets" style="margin-top:32px">
+        <li><strong>Product must be live and stable</strong> before the clock starts — PH traffic is unforgiving</li>
+        <li>Start <strong>2–3 weeks out</strong> — anything less is a rushed launch</li>
+        <li>Launch day is the <strong>harvest</strong> of prep work done earlier</li>
+      </ul>
+    </div>
+    <div class="lang-zh">
+      <h2><span class="orange-accent">2–3 周</span>准备，一天收获</h2>
+      <div class="timeline" style="margin-top:36px">
+        <div class="tl-item"><div class="tl-dot">W1</div><div class="tl-label">第 1 周</div><div class="tl-sub">完成并部署产品。设置 Upcoming 页面。联系 Hunter。</div></div>
+        <div class="tl-item"><div class="tl-dot">W2</div><div class="tl-label">第 2 周</div><div class="tl-sub">积累"通知我"名单。完善素材与文案。预热社区、邮件列表、Twitter。</div></div>
+        <div class="tl-item"><div class="tl-dot">W3</div><div class="tl-label">第 3 周（可选）</div><div class="tl-sub">起草推广文案。简报内圈支持者。最终检查。</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--orange); color:white">🚀</div><div class="tl-label" style="color:var(--orange)">发布日</div><div class="tl-sub" style="color:var(--orange-light)">执行。互动。回复每一条评论。</div></div>
       </div>
+      <ul class="bullets" style="margin-top:32px">
+        <li><strong>产品必须上线且稳定</strong>才能开始倒计时 — PH 流量毫不留情</li>
+        <li>从 <strong>2–3 周前</strong>开始准备 — 时间更短等于仓促发布</li>
+        <li>发布日是前期准备工作的<strong>收获期</strong></li>
+      </ul>
     </div>
   </div>
 
   <!-- ══ SLIDE 7 ══ -->
-  <div class="slide" data-notes="The demo video is your product's trailer, not a tutorial. Lead with the 'aha moment' — the instant a user realizes the product is valuable — within the first 10 seconds. Founders who spend the first 30 seconds on a logo animation or company backstory lose the viewer. Gallery images should walk through the core workflow so someone who skips the video still understands the product.">
-    <div class="slide-header"><span class="slide-num">07 — Gallery & Demo Video</span><div class="slide-num-line"></div></div>
-    <h2>Show, Don't <span class="orange-accent">Tell</span></h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
-      <div>
-        <div class="eyebrow">Demo Video</div>
-        <ul class="bullets" style="margin-top:0">
-          <li><strong>Under 60 seconds</strong> — attention drops fast</li>
-          <li>Lead with the <strong>"aha" moment</strong> in the first 10 seconds</li>
-          <li>Skip corporate intros, logo animations, and backstory</li>
-          <li>Show the product actually <strong>doing its job</strong></li>
-        </ul>
-      </div>
-      <div>
-        <div class="eyebrow">Gallery Images</div>
-        <ul class="bullets" style="margin-top:0">
-          <li>Minimum <strong>4–6 images</strong> — walk through the core workflow</li>
-          <li>Each image should stand alone — many users <strong>skip the video</strong></li>
-          <li>Use <strong>clean product screenshots</strong> + context captions</li>
-          <li>Final image: a <strong>social proof</strong> or key stat if you have one</li>
-        </ul>
+  <div class="slide" data-notes="The thumbnail and tagline are the first things people see in the ranked feed. If they don't stop scrolling, nothing else matters. The tagline should answer 'what does this do for me?' in under 60 characters — not what the product is, but what the user gets. The thumbnail should be readable at 60×60px; test it by shrinking it down in your browser before submission." data-notes-zh="缩略图和标语是用户在排名信息流中首先看到的。如果他们不停下来滚动，其他一切都无关紧要。标语应该回答'我能得到什么？'而不是产品是什么。缩略图应该在 60×60px 下可读；提交前在浏览器中缩小测试。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">07 — Name, Tagline, Thumbnail</span><span class="sn-zh">07 — 名称、标语、缩略图</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Your <span class="orange-accent">First Impression</span> in the Feed</h2>
+      <div class="cards cards-2" style="margin-top:24px">
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <div class="card accent"><div class="card-icon">🏷</div><h3>Tagline Rules</h3><p>Never feature-led. Under 60 characters. Pick one angle: benefit, problem, or unique POV — and own it.</p></div>
+          <div class="card"><div class="card-icon">🖼</div><h3>Thumbnail Rules</h3><p>Bold, high-contrast, readable at small size. Test at 60×60px. No walls of text. One clear visual hook.</p></div>
+        </div>
+        <div style="background:var(--navy-mid); border:1px solid var(--navy-light); border-radius:12px; padding:24px">
+          <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:14px">3 Angles That Work</div>
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <div style="padding:8px 12px; border-radius:6px; background:rgba(0,194,168,0.06); border-left:3px solid var(--accent-teal)">
+              <div style="font-size:10px; font-weight:700; color:var(--accent-teal); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px">Benefit</div>
+              <div style="font-size:12px; color:var(--cream)">"Find any doc in 5 seconds — guaranteed"</div>
+            </div>
+            <div style="padding:8px 12px; border-radius:6px; background:rgba(247,201,72,0.06); border-left:3px solid var(--accent-gold)">
+              <div style="font-size:10px; font-weight:700; color:var(--accent-gold); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px">Problem</div>
+              <div style="font-size:12px; color:var(--cream)">"Stop losing docs in Slack and email"</div>
+            </div>
+            <div style="padding:8px 12px; border-radius:6px; background:rgba(255,107,53,0.06); border-left:3px solid var(--orange)">
+              <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px">Unique Angle</div>
+              <div style="font-size:12px; color:var(--cream)">"Search memory for your whole team"</div>
+            </div>
+          </div>
+          <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--navy-light)"><div style="font-size:11px; color:var(--gray-mid)">Character limit: <span style="color:var(--orange); font-weight:700">60 chars max</span></div></div>
+        </div>
       </div>
     </div>
-
-    <div class="highlight-box">
-      <strong>Structure your video:</strong> Problem (5s) → Product doing the job (40s) → Result / CTA (15s). That's it.
+    <div class="lang-zh">
+      <h2>信息流中的<span class="orange-accent">第一印象</span></h2>
+      <div class="cards cards-2" style="margin-top:24px">
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <div class="card accent"><div class="card-icon">🏷</div><h3>标语规则</h3><p>绝不以功能为导向。60字符以内。选一个角度：利益、问题或独特视角——并彻底贯彻它。</p></div>
+          <div class="card"><div class="card-icon">🖼</div><h3>缩略图规则</h3><p>醒目、高对比度、小尺寸可读。在 60×60px 下测试。不要满屏文字。一个清晰的视觉钩子。</p></div>
+        </div>
+        <div style="background:var(--navy-mid); border:1px solid var(--navy-light); border-radius:12px; padding:24px">
+          <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:14px">三种有效写法</div>
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <div style="padding:8px 12px; border-radius:6px; background:rgba(0,194,168,0.06); border-left:3px solid var(--accent-teal)">
+              <div style="font-size:10px; font-weight:700; color:var(--accent-teal); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px">利益导向</div>
+              <div style="font-size:12px; color:var(--cream)">"5秒内找到任何文档——保证有效"</div>
+            </div>
+            <div style="padding:8px 12px; border-radius:6px; background:rgba(247,201,72,0.06); border-left:3px solid var(--accent-gold)">
+              <div style="font-size:10px; font-weight:700; color:var(--accent-gold); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px">问题导向</div>
+              <div style="font-size:12px; color:var(--cream)">"告别文档在 Slack 和邮件里丢失的烦恼"</div>
+            </div>
+            <div style="padding:8px 12px; border-radius:6px; background:rgba(255,107,53,0.06); border-left:3px solid var(--orange)">
+              <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px">独特视角</div>
+              <div style="font-size:12px; color:var(--cream)">"为整个团队搜索共同记忆"</div>
+            </div>
+          </div>
+          <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--navy-light)"><div style="font-size:11px; color:var(--gray-mid)">字符限制：<span style="color:var(--orange); font-weight:700">最多 60 字</span></div></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ══ SLIDE 8 ══ -->
-  <div class="slide" data-notes="The maker's first comment is the highest-leverage action of the entire launch day. It sets the tone, signals that the maker is present and engaged, and converts passive scrollers into active voters. The key is to be human — tell a real story about why you built this, acknowledge the problem personally, and invite honest feedback. A pitch disguised as a story will be seen through immediately.">
-    <div class="slide-header"><span class="slide-num">08 — Maker's First Comment</span><div class="slide-num-line"></div></div>
-    <h2>Your <span class="orange-accent">First Comment</span> Sets the Tone</h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px">
-      <div>
-        <ul class="bullets" style="margin-top:0">
-          <li>Post <strong>immediately</strong> at launch — be the first comment</li>
-          <li>Tell a <strong>personal story</strong> about why you built it</li>
-          <li><strong>Invite feedback</strong>, don't pitch — ask a genuine question</li>
-          <li>Converts browsers into upvoters and turns voters into commenters</li>
-        </ul>
-
-        <div class="do-dont" style="margin-top:20px; display:flex; flex-direction:column; gap:10px">
-          <div style="padding:10px 14px; border-radius:8px; background:rgba(255,107,107,0.05); border-left:3px solid #ff6b6b; font-size:13px; color:var(--cream)">
-            <span style="color:#ff6b6b; font-weight:700">✗ Pitch:</span> "We're the best tool for X — check us out and upvote if you agree!"
-          </div>
-          <div style="padding:10px 14px; border-radius:8px; background:rgba(0,194,168,0.05); border-left:3px solid var(--accent-teal); font-size:13px; color:var(--cream)">
-            <span style="color:var(--accent-teal); font-weight:700">✓ Story:</span> "I built this after losing 3 hours to [problem]. Curious — does this resonate with you?"
-          </div>
+  <div class="slide" data-notes="The demo video is your product's trailer, not a tutorial. Lead with the 'aha moment' — the instant a user realizes the product is valuable — within the first 10 seconds. Founders who spend the first 30 seconds on a logo animation or company backstory lose the viewer. Gallery images should walk through the core workflow so someone who skips the video still understands the product." data-notes-zh="演示视频是产品的预告片，不是教程。在前10秒内展示'灵光一现'时刻。前30秒花在Logo动画或公司背景故事上的创始人会失去观众。图库图片应该展示核心工作流程，这样跳过视频的人也能理解产品。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">08 — Gallery &amp; Demo Video</span><span class="sn-zh">08 — 图库与演示视频</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Show, Don't <span class="orange-accent">Tell</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div>
+          <div class="eyebrow">Demo Video</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>Under 60 seconds</strong> — attention drops fast</li>
+            <li>Lead with the <strong>"aha" moment</strong> in the first 10 seconds</li>
+            <li>Skip corporate intros, logo animations, and backstory</li>
+            <li>Show the product actually <strong>doing its job</strong></li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">Gallery Images</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>Minimum <strong>4–6 images</strong> — walk through the core workflow</li>
+            <li>Each image should stand alone — many users <strong>skip the video</strong></li>
+            <li>Use <strong>clean product screenshots</strong> + context captions</li>
+            <li>Final image: a <strong>social proof</strong> or key stat if you have one</li>
+          </ul>
         </div>
       </div>
-
-      <div style="background:var(--navy-mid); border-radius:12px; padding:24px; border:1px solid var(--navy-light)">
-        <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:16px">Anatomy of a Great First Comment</div>
-        <div style="display:flex; flex-direction:column; gap:10px">
-          <div style="display:flex; gap:10px; align-items:flex-start">
-            <div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">1</div>
-            <div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">The pain:</strong> One sentence on the problem you faced personally</div>
-          </div>
-          <div style="display:flex; gap:10px; align-items:flex-start">
-            <div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">2</div>
-            <div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">The insight:</strong> What made you realize the existing solution was broken</div>
-          </div>
-          <div style="display:flex; gap:10px; align-items:flex-start">
-            <div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">3</div>
-            <div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">The ask:</strong> An open question that invites a real reply</div>
-          </div>
+      <div class="highlight-box"><strong>Structure your video:</strong> Problem (5s) → Product doing the job (40s) → Result / CTA (15s). That's it.</div>
+    </div>
+    <div class="lang-zh">
+      <h2>展示，<span class="orange-accent">而非讲述</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div>
+          <div class="eyebrow">演示视频</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>60秒以内</strong> — 注意力流失很快</li>
+            <li>前10秒展示<strong>"灵光一现"时刻</strong></li>
+            <li>跳过企业介绍、Logo 动画和背景故事</li>
+            <li>展示产品真正<strong>在运作</strong></li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">图库图片</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>至少 <strong>4–6 张图</strong> — 带领用户了解核心使用流程</li>
+            <li>每张图应能独立表达 — 很多用户<strong>跳过视频</strong></li>
+            <li>使用<strong>清晰的产品截图</strong>加说明文字</li>
+            <li>最后一张：如有则放<strong>社会证明</strong>或关键数据</li>
+          </ul>
         </div>
       </div>
+      <div class="highlight-box"><strong>视频结构：</strong>问题（5秒）→ 产品实际运作（40秒）→ 结果/行动号召（15秒）。就这样。</div>
     </div>
   </div>
 
   <!-- ══ SLIDE 9 ══ -->
-  <div class="slide" data-notes="The 'you need a famous hunter' myth is outdated. PH changed its algorithm in 2022 to reduce hunter leverage — today the maker's own network and the quality of the listing matter far more. That said, a hunter with 10,000+ PH followers can still provide a meaningful boost for a less-established product. If you want a hunter, contact them 2+ weeks out — they receive many pitches and need time to review.">
-    <div class="slide-header"><span class="slide-num">09 — Hunter or No Hunter</span><div class="slide-num-line"></div></div>
-    <h2>Do You Need a <span class="orange-accent">Hunter?</span></h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
-      <div class="card">
-        <div class="card-icon">🙋</div>
-        <h3>Self-Submit</h3>
-        <p style="margin-top:8px; font-size:13px; color:var(--gray-light); line-height:1.55">Completely valid in 2024+. PH reduced hunter algorithm weight. Your own network and listing quality matter more. No dependencies, full control.</p>
-        <div style="margin-top:12px; font-size:12px; color:var(--accent-teal); font-weight:600">✓ Recommended for most founders</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎯</div>
-        <h3>Use a Hunter</h3>
-        <p style="margin-top:8px; font-size:13px; color:var(--gray-light); line-height:1.55">Helpful if they have 10K+ PH followers and are genuinely excited about your product. Their audience must be relevant to yours.</p>
-        <div style="margin-top:12px; font-size:12px; color:var(--accent-gold); font-weight:600">Contact them 2+ weeks in advance</div>
+  <div class="slide" data-notes="The maker's first comment is the highest-leverage action of the entire launch day. It sets the tone, signals that the maker is present and engaged, and converts passive scrollers into active voters. The key is to be human — tell a real story about why you built this, acknowledge the problem personally, and invite honest feedback. A pitch disguised as a story will be seen through immediately." data-notes-zh="Maker 的首条评论是整个发布日最高杠杆的行动。它定下基调，表明 Maker 在场并积极互动，将被动的浏览者转化为主动的点赞者。关键是真实——讲述你为何打造这个的真实故事，邀请诚实的反馈。伪装成故事的推销会立刻被看穿。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">09 — Maker's First Comment</span><span class="sn-zh">09 — Maker 的首条评论</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Your <span class="orange-accent">First Comment</span> Sets the Tone</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px">
+        <div>
+          <ul class="bullets" style="margin-top:0">
+            <li>Post <strong>immediately</strong> at launch — be the first comment</li>
+            <li>Tell a <strong>personal story</strong> about why you built it</li>
+            <li><strong>Invite feedback</strong>, don't pitch — ask a genuine question</li>
+            <li>Converts browsers into upvoters and turns voters into commenters</li>
+          </ul>
+          <div class="do-dont" style="margin-top:20px; display:flex; flex-direction:column; gap:10px">
+            <div style="padding:10px 14px; border-radius:8px; background:rgba(255,107,107,0.05); border-left:3px solid #ff6b6b; font-size:13px; color:var(--cream)"><span style="color:#ff6b6b; font-weight:700">✗ Pitch:</span> "We're the best tool for X — check us out and upvote if you agree!"</div>
+            <div style="padding:10px 14px; border-radius:8px; background:rgba(0,194,168,0.05); border-left:3px solid var(--accent-teal); font-size:13px; color:var(--cream)"><span style="color:var(--accent-teal); font-weight:700">✓ Story:</span> "I built this after losing 3 hours to [problem]. Curious — does this resonate with you?"</div>
+          </div>
+        </div>
+        <div style="background:var(--navy-mid); border-radius:12px; padding:24px; border:1px solid var(--navy-light)">
+          <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:16px">Anatomy of a Great First Comment</div>
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <div style="display:flex; gap:10px; align-items:flex-start"><div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">1</div><div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">The pain:</strong> One sentence on the problem you faced personally</div></div>
+            <div style="display:flex; gap:10px; align-items:flex-start"><div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">2</div><div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">The insight:</strong> What made you realize the existing solution was broken</div></div>
+            <div style="display:flex; gap:10px; align-items:flex-start"><div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">3</div><div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">The ask:</strong> An open question that invites a real reply</div></div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <ul class="bullets" style="margin-top:24px">
-      <li>If using a hunter — <strong>pitch them clearly</strong>: who it's for, what problem it solves, traction you have</li>
-      <li><strong>Never pay for a hunter</strong> — violates PH rules and signals inauthenticity</li>
-      <li>Most top hunters like <strong>@rrhoover</strong> founders now prioritize founders who submit themselves</li>
-    </ul>
+    <div class="lang-zh">
+      <h2>你的<span class="orange-accent">首条评论</span>定下基调</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px">
+        <div>
+          <ul class="bullets" style="margin-top:0">
+            <li>发布后<strong>立即</strong>发出 — 成为第一条评论</li>
+            <li>讲述你为何打造它的<strong>个人故事</strong></li>
+            <li><strong>邀请反馈</strong>，不要推销 — 问一个真诚的问题</li>
+            <li>将浏览者转化为点赞者，将点赞者转化为评论者</li>
+          </ul>
+          <div class="do-dont" style="margin-top:20px; display:flex; flex-direction:column; gap:10px">
+            <div style="padding:10px 14px; border-radius:8px; background:rgba(255,107,107,0.05); border-left:3px solid #ff6b6b; font-size:13px; color:var(--cream)"><span style="color:#ff6b6b; font-weight:700">✗ 推销：</span>"我们是 X 领域最佳工具——来看看，如果认同就点赞！"</div>
+            <div style="padding:10px 14px; border-radius:8px; background:rgba(0,194,168,0.05); border-left:3px solid var(--accent-teal); font-size:13px; color:var(--cream)"><span style="color:var(--accent-teal); font-weight:700">✓ 故事：</span>"我因为[问题]浪费了3小时后做了这个。你有没有类似的体验？"</div>
+          </div>
+        </div>
+        <div style="background:var(--navy-mid); border-radius:12px; padding:24px; border:1px solid var(--navy-light)">
+          <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:16px">优质首条评论的结构</div>
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <div style="display:flex; gap:10px; align-items:flex-start"><div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">1</div><div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">痛点：</strong>一句话描述你亲身经历的问题</div></div>
+            <div style="display:flex; gap:10px; align-items:flex-start"><div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">2</div><div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">洞察：</strong>让你意识到现有方案有缺陷的那个瞬间</div></div>
+            <div style="display:flex; gap:10px; align-items:flex-start"><div style="width:24px; height:24px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0">3</div><div style="font-size:13px; color:var(--cream)"><strong style="color:var(--white)">邀请：</strong>一个真诚期待回复的开放性问题</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ══ SLIDE 10 ══ -->
-  <div class="slide" data-notes="The Upcoming page is Product Hunt's built-in pre-launch tool and it's massively underused. When someone clicks 'Notify me,' they get an email from PH the moment you launch — this is warm, opt-in traffic that converts at a far higher rate than cold outreach. Meanwhile, warming up your channels means priming your audience with problem-related content so your launch feels like a natural next step, not a cold ask.">
-    <div class="slide-header"><span class="slide-num">10 — Build Your Audience</span><div class="slide-num-line"></div></div>
-    <h2>Build <span class="orange-accent">Before</span> You Launch</h2>
-
-    <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:20px; margin-top:24px">
-      <div>
-        <div class="eyebrow">PH Upcoming Page</div>
-        <ul class="bullets" style="margin-top:0">
-          <li>Activates <strong>2–3 weeks before launch</strong> — get yours live immediately</li>
-          <li>Visitors click "Notify me" → PH emails them at launch</li>
-          <li>Aim for <strong>100+ notify-me signups</strong> before launch day</li>
-          <li>Warm traffic converts 3–5× better than cold outreach</li>
-        </ul>
+  <div class="slide" data-notes="The 'you need a famous hunter' myth is outdated. PH changed its algorithm in 2022 to reduce hunter leverage — today the maker's own network and the quality of the listing matter far more. That said, a hunter with 10,000+ PH followers can still provide a meaningful boost for a less-established product. If you want a hunter, contact them 2+ weeks out — they receive many pitches and need time to review." data-notes-zh="'你需要著名 Hunter' 的神话已经过时了。PH 在2022年改变了算法，降低了 Hunter 的杠杆——今天 Maker 自己的网络和产品页质量更重要。如果你想要 Hunter，提前 2+ 周联系——他们收到很多推介，需要时间审查。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">10 — Hunter or No Hunter</span><span class="sn-zh">10 — Hunter 还是不用</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Do You Need a <span class="orange-accent">Hunter?</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div class="card"><div class="card-icon">🙋</div><h3>Self-Submit</h3><p style="margin-top:8px; font-size:13px; color:var(--gray-light); line-height:1.55">Completely valid in 2024+. PH reduced hunter algorithm weight. Your own network and listing quality matter more. No dependencies, full control.</p><div style="margin-top:12px; font-size:12px; color:var(--accent-teal); font-weight:600">✓ Recommended for most founders</div></div>
+        <div class="card"><div class="card-icon">🎯</div><h3>Use a Hunter</h3><p style="margin-top:8px; font-size:13px; color:var(--gray-light); line-height:1.55">Helpful if they have 10K+ PH followers and are genuinely excited about your product. Their audience must be relevant to yours.</p><div style="margin-top:12px; font-size:12px; color:var(--accent-gold); font-weight:600">Contact them 2+ weeks in advance</div></div>
       </div>
-      <div>
-        <div class="eyebrow">Warm Your Channels</div>
-        <ul class="bullets" style="margin-top:0">
-          <li><strong>Twitter/X & LinkedIn:</strong> post about the problem you solve, 2× per week</li>
-          <li><strong>Newsletter:</strong> tease the launch one week out</li>
-          <li><strong>Communities:</strong> Slack, Discord, Reddit — add value first, pitch last</li>
-          <li>Your audience should feel like launch is <strong>the natural next step</strong></li>
-        </ul>
-      </div>
+      <ul class="bullets" style="margin-top:24px">
+        <li>If using a hunter — <strong>pitch them clearly</strong>: who it's for, what problem it solves, traction you have</li>
+        <li><strong>Never pay for a hunter</strong> — violates PH rules and signals inauthenticity</li>
+        <li>Most top hunters like <strong>@rrhoover</strong> founders now prioritize founders who submit themselves</li>
+      </ul>
     </div>
-
-    <div class="highlight-box">
-      <strong>The notify-me list is your most valuable pre-launch asset.</strong> These are people who asked to be told when you launch — treat them accordingly.
+    <div class="lang-zh">
+      <h2>你需要<span class="orange-accent">Hunter</span>吗？</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div class="card"><div class="card-icon">🙋</div><h3>自行提交</h3><p style="margin-top:8px; font-size:13px; color:var(--gray-light); line-height:1.55">2024年完全可行。PH 已降低 Hunter 的算法权重。你自己的网络和产品页质量更重要。没有依赖，完全掌控。</p><div style="margin-top:12px; font-size:12px; color:var(--accent-teal); font-weight:600">✓ 大多数创始人的推荐选择</div></div>
+        <div class="card"><div class="card-icon">🎯</div><h3>借助 Hunter</h3><p style="margin-top:8px; font-size:13px; color:var(--gray-light); line-height:1.55">仅在对方有 1 万+ PH 粉丝且真心喜欢你产品时才有帮助。受众必须与你相关。</p><div style="margin-top:12px; font-size:12px; color:var(--accent-gold); font-weight:600">至少提前 2 周联系</div></div>
+      </div>
+      <ul class="bullets" style="margin-top:24px">
+        <li>如果借助 Hunter — <strong>清晰阐明</strong>：目标用户、解决什么问题、现有进展</li>
+        <li><strong>不要为 Hunter 付费</strong> — 违反 PH 规则且显得不真诚</li>
+        <li>大多数顶级 Hunter 现在更青睐<strong>自行提交的创始人</strong></li>
+      </ul>
     </div>
   </div>
 
   <!-- ══ SLIDE 11 ══ -->
-  <div class="slide" data-notes="The 12:01am PST timing gives you the maximum possible ranking window — the full 24 hours. Every hour you delay is ranking time you forfeit. Friday and weekend launches are technically fine but PH's editorial team doesn't feature them as prominently, and the tech/SaaS audience is smaller on weekends. Tuesday, Wednesday, and Thursday are historically the strongest days for B2B and B2C SaaS.">
-    <div class="slide-header"><span class="slide-num">11 — Launch Timing</span><div class="slide-num-line"></div></div>
-    <h2>Launch at <span class="orange-accent">12:01am PST</span> — Not a Minute Later</h2>
-
-    <div style="margin-top:28px">
-      <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:14px">Ranking window by launch time</div>
-      <div class="hour-chart">
-        <div class="hour-row">
-          <div class="hour-label">12:01am PST</div>
-          <div class="hour-bar-wrap">
-            <div class="hour-bar-fill" style="width:100%; background:linear-gradient(90deg, var(--orange), var(--orange-light))">24h window</div>
-          </div>
-          <div class="hour-row-label" style="color:var(--orange); font-weight:700">Full window</div>
+  <div class="slide" data-notes="The Upcoming page is Product Hunt's built-in pre-launch tool and it's massively underused. When someone clicks 'Notify me,' they get an email from PH the moment you launch — this is warm, opt-in traffic that converts at a far higher rate than cold outreach. Meanwhile, warming up your channels means priming your audience with problem-related content so your launch feels like a natural next step, not a cold ask." data-notes-zh="Upcoming 页面是 Product Hunt 内置的预发布工具，被严重低估。当有人点击'通知我'，他们会在你发布时收到 PH 的邮件——这是高转化的预热流量。同时，预热渠道意味着用与问题相关的内容启动你的受众，让你的发布感觉像自然的下一步，而非冷推销。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">11 — Build Your Audience</span><span class="sn-zh">11 — 积累受众</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Build <span class="orange-accent">Before</span> You Launch</h2>
+      <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:20px; margin-top:24px">
+        <div>
+          <div class="eyebrow">PH Upcoming Page</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>Activates <strong>2–3 weeks before launch</strong> — get yours live immediately</li>
+            <li>Visitors click "Notify me" → PH emails them at launch</li>
+            <li>Aim for <strong>100+ notify-me signups</strong> before launch day</li>
+            <li>Warm traffic converts 3–5× better than cold outreach</li>
+          </ul>
         </div>
-        <div class="hour-row">
-          <div class="hour-label">6:00am PST</div>
-          <div class="hour-bar-wrap">
-            <div class="hour-bar-fill" style="width:75%; background:linear-gradient(90deg, #c45a2a, #d97040)">18h window</div>
-          </div>
-          <div class="hour-row-label" style="color:var(--accent-gold)">Good</div>
-        </div>
-        <div class="hour-row">
-          <div class="hour-label">9:00am PST</div>
-          <div class="hour-bar-wrap">
-            <div class="hour-bar-fill" style="width:62.5%; background:linear-gradient(90deg, #8a6030, #b07840)">15h window</div>
-          </div>
-          <div class="hour-row-label" style="color:var(--accent-gold)">Okay</div>
-        </div>
-        <div class="hour-row">
-          <div class="hour-label">12:00pm PST</div>
-          <div class="hour-bar-wrap">
-            <div class="hour-bar-fill" style="width:50%; background:linear-gradient(90deg, #5a4030, #7a5840)">12h window</div>
-          </div>
-          <div class="hour-row-label" style="color:var(--gray-mid)">Weak</div>
+        <div>
+          <div class="eyebrow">Warm Your Channels</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>Twitter/X &amp; LinkedIn:</strong> post about the problem you solve, 2× per week</li>
+            <li><strong>Newsletter:</strong> tease the launch one week out</li>
+            <li><strong>Communities:</strong> Slack, Discord, Reddit — add value first, pitch last</li>
+            <li>Your audience should feel like launch is <strong>the natural next step</strong></li>
+          </ul>
         </div>
       </div>
+      <div class="highlight-box"><strong>The notify-me list is your most valuable pre-launch asset.</strong> These are people who asked to be told when you launch — treat them accordingly.</div>
     </div>
-
-    <ul class="bullets" style="margin-top:24px">
-      <li>Avoid <strong>Fridays and weekends</strong> — lower traffic, less editorial attention</li>
-      <li><strong>Tuesday, Wednesday, Thursday</strong> are historically strongest for SaaS</li>
-      <li>Set your alarm — launching late is a <strong>recoverable mistake only if caught early</strong></li>
-    </ul>
+    <div class="lang-zh">
+      <h2>发布<span class="orange-accent">前</span>先积累受众</h2>
+      <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:20px; margin-top:24px">
+        <div>
+          <div class="eyebrow">PH Upcoming 页面</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>发布前 <strong>2–3 周激活</strong> — 立即上线你的 Upcoming 页面</li>
+            <li>访客点击"通知我" → PH 在发布时自动发邮件给他们</li>
+            <li>目标是发布日前积累 <strong>100+ 通知订阅</strong></li>
+            <li>预热流量转化率比冷推广高 <strong>3–5 倍</strong></li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">预热渠道</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>Twitter/X &amp; LinkedIn：</strong>每周 2 次发布你解决的问题</li>
+            <li><strong>邮件列表：</strong>发布前一周预告</li>
+            <li><strong>社区：</strong>Slack、Discord、Reddit — 先提供价值，最后才推广</li>
+            <li>你的受众应该感觉发布是<strong>顺理成章的下一步</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box"><strong>"通知我"名单是你最有价值的预发布资产。</strong>这些是主动要求在你发布时收到通知的人——请认真对待他们。</div>
+    </div>
   </div>
 
   <!-- ══ SLIDE 12 ══ -->
-  <div class="slide" data-notes="The first hour is the most critical period of the entire launch. The algorithm is watching for velocity signals — rapid early upvotes and comments indicate a product worth surfacing to a wider audience. Your inner circle should be primed and ready to go before launch: they should have the link, know what to say, and be standing by. Don't alert your whole network at once — stagger outreach through the day to maintain steady velocity.">
-    <div class="slide-header"><span class="slide-num">12 — First-Hour Push</span><div class="slide-num-line"></div></div>
-    <h2>The <span class="orange-accent">First Hour</span> is the Algorithm Test</h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
-      <div>
-        <div class="eyebrow">First Hour (12:01–1am)</div>
-        <ul class="bullets" style="margin-top:0">
-          <li>Alert your <strong>5–15 closest supporters</strong> — people who will genuinely engage</li>
-          <li>These are friends, customers, advisors — <strong>not random followers</strong></li>
-          <li>Ask them to comment, not just vote — comments amplify the signal</li>
-          <li>Post your maker first comment <strong>immediately</strong></li>
-        </ul>
+  <div class="slide" data-notes="The 12:01am PST timing gives you the maximum possible ranking window — the full 24 hours. Every hour you delay is ranking time you forfeit. Friday and weekend launches are technically fine but PH's editorial team doesn't feature them as prominently, and the tech/SaaS audience is smaller on weekends. Tuesday, Wednesday, and Thursday are historically the strongest days for B2B and B2C SaaS." data-notes-zh="PST 凌晨 12:01 的发布时机给你最大可能的排名窗口——完整的24小时。每延迟一小时就是放弃的排名时间。周二、三、四历史上是 B2B 和 B2C SaaS 最强的发布日。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">12 — Launch Timing</span><span class="sn-zh">12 — 发布时机</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Launch at <span class="orange-accent">12:01am PST</span> — Not a Minute Later</h2>
+      <div style="margin-top:28px">
+        <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:14px">Ranking window by launch time</div>
+        <div class="hour-chart">
+          <div class="hour-row"><div class="hour-label">12:01am PST</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:100%; background:linear-gradient(90deg, var(--orange), var(--orange-light))">24h window</div></div><div class="hour-row-label" style="color:var(--orange); font-weight:700">Full window</div></div>
+          <div class="hour-row"><div class="hour-label">6:00am PST</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:75%; background:linear-gradient(90deg, #c45a2a, #d97040)">18h window</div></div><div class="hour-row-label" style="color:var(--accent-gold)">Good</div></div>
+          <div class="hour-row"><div class="hour-label">9:00am PST</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:62.5%; background:linear-gradient(90deg, #8a6030, #b07840)">15h window</div></div><div class="hour-row-label" style="color:var(--accent-gold)">Okay</div></div>
+          <div class="hour-row"><div class="hour-label">12:00pm PST</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:50%; background:linear-gradient(90deg, #5a4030, #7a5840)">12h window</div></div><div class="hour-row-label" style="color:var(--gray-mid)">Weak</div></div>
+        </div>
       </div>
-      <div>
-        <div class="eyebrow">Rest of Day (1am–midnight)</div>
-        <ul class="bullets" style="margin-top:0">
-          <li><strong>Stagger outreach</strong> — email, Twitter, newsletter, communities at different times</li>
-          <li>Front-loading everything creates a spike then silence — <strong>bad signal</strong></li>
-          <li>Post updates on your launch progress to re-engage your network</li>
-          <li>Keep responding to every comment throughout the day</li>
-        </ul>
-      </div>
+      <ul class="bullets" style="margin-top:24px">
+        <li>Avoid <strong>Fridays and weekends</strong> — lower traffic, less editorial attention</li>
+        <li><strong>Tuesday, Wednesday, Thursday</strong> are historically strongest for SaaS</li>
+        <li>Set your alarm — launching late is a <strong>recoverable mistake only if caught early</strong></li>
+      </ul>
     </div>
-
-    <div class="highlight-box">
-      <strong>Velocity &gt; Volume.</strong> 20 genuine upvotes in the first hour is worth more than 100 votes at 6pm.
+    <div class="lang-zh">
+      <h2>在 <span class="orange-accent">PST 凌晨 12:01</span> 发布——一分钟都不能晚</h2>
+      <div style="margin-top:28px">
+        <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:14px">按发布时间划分的排名窗口</div>
+        <div class="hour-chart">
+          <div class="hour-row"><div class="hour-label">凌晨 12:01</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:100%; background:linear-gradient(90deg, var(--orange), var(--orange-light))">24小时窗口</div></div><div class="hour-row-label" style="color:var(--orange); font-weight:700">完整窗口</div></div>
+          <div class="hour-row"><div class="hour-label">早上 6:00</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:75%; background:linear-gradient(90deg, #c45a2a, #d97040)">18小时窗口</div></div><div class="hour-row-label" style="color:var(--accent-gold)">良好</div></div>
+          <div class="hour-row"><div class="hour-label">早上 9:00</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:62.5%; background:linear-gradient(90deg, #8a6030, #b07840)">15小时窗口</div></div><div class="hour-row-label" style="color:var(--accent-gold)">尚可</div></div>
+          <div class="hour-row"><div class="hour-label">中午 12:00</div><div class="hour-bar-wrap"><div class="hour-bar-fill" style="width:50%; background:linear-gradient(90deg, #5a4030, #7a5840)">12小时窗口</div></div><div class="hour-row-label" style="color:var(--gray-mid)">较弱</div></div>
+        </div>
+      </div>
+      <ul class="bullets" style="margin-top:24px">
+        <li>避开<strong>周五和周末</strong> — 流量低，编辑关注少</li>
+        <li><strong>周二、三、四</strong>历史上是 SaaS 最强发布日</li>
+        <li>设好闹钟 — 发布晚了<strong>只有尽早发现才能补救</strong></li>
+      </ul>
     </div>
   </div>
 
   <!-- ══ SLIDE 13 ══ -->
-  <div class="slide" data-notes="PH's community guidelines explicitly prohibit asking for upvotes. The phrase 'please upvote us' is the fastest way to get your launch flagged or downranked. The correct language is informative: 'We just launched on Product Hunt — here's the link.' Let people make their own decision. Interestingly, this approach actually converts better because it doesn't feel like an ask — it feels like news.">
-    <div class="slide-header"><span class="slide-num">13 — Ask Without Breaking Rules</span><div class="slide-num-line"></div></div>
-    <h2>How to Ask Without <span class="orange-accent">Getting Flagged</span></h2>
-
-    <div class="do-dont" style="margin-top:28px">
-      <div class="do-dont-col dont-col">
-        <div class="do-dont-head dont">✗ Banned Language</div>
-        <div class="do-dont-item">"Please upvote us on Product Hunt!"</div>
-        <div class="do-dont-item">"Help us get #1 — every upvote counts!"</div>
-        <div class="do-dont-item">"Vote for us so we can win today"</div>
-        <div class="do-dont-item">"If you like this, make sure to upvote"</div>
+  <div class="slide" data-notes="The first hour is the most critical period of the entire launch. The algorithm is watching for velocity signals — rapid early upvotes and comments indicate a product worth surfacing to a wider audience. Your inner circle should be primed and ready to go before launch: they should have the link, know what to say, and be standing by. Don't alert your whole network at once — stagger outreach through the day to maintain steady velocity." data-notes-zh="第一小时是整个发布最关键的时期。算法在寻找速度信号——快速的早期点赞和评论表明产品值得向更广泛的受众推广。你的内圈应该在发布前做好准备：他们应该有链接，知道说什么，并随时待命。不要一次性提醒整个网络——全天分批推广以保持稳定的速度。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">13 — First-Hour Push</span><span class="sn-zh">13 — 第一小时冲刺</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>The <span class="orange-accent">First Hour</span> is the Algorithm Test</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div>
+          <div class="eyebrow">First Hour (12:01–1am)</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>Alert your <strong>5–15 closest supporters</strong> — people who will genuinely engage</li>
+            <li>These are friends, customers, advisors — <strong>not random followers</strong></li>
+            <li>Ask them to comment, not just vote — comments amplify the signal</li>
+            <li>Post your maker first comment <strong>immediately</strong></li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">Rest of Day (1am–midnight)</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>Stagger outreach</strong> — email, Twitter, newsletter, communities at different times</li>
+            <li>Front-loading everything creates a spike then silence — <strong>bad signal</strong></li>
+            <li>Post updates on your launch progress to re-engage your network</li>
+            <li>Keep responding to every comment throughout the day</li>
+          </ul>
+        </div>
       </div>
-      <div class="do-dont-col do-col">
-        <div class="do-dont-head do">✓ Compliant Language</div>
-        <div class="do-dont-item">"We just launched on Product Hunt today"</div>
-        <div class="do-dont-item">"We're live — here's the link if you want to check it out"</div>
-        <div class="do-dont-item">"Would love your thoughts on our PH listing"</div>
-        <div class="do-dont-item">"We launched [product] — feedback welcome!"</div>
-      </div>
+      <div class="highlight-box"><strong>Velocity &gt; Volume.</strong> 20 genuine upvotes in the first hour is worth more than 100 votes at 6pm.</div>
     </div>
-
-    <ul class="bullets" style="margin-top:24px">
-      <li>PH detects patterns in outreach — <strong>vote rings are penalized</strong>, not just ignored</li>
-      <li>Informative framing converts as well or better — it <strong>feels like news, not a pitch</strong></li>
-    </ul>
+    <div class="lang-zh">
+      <h2><span class="orange-accent">第一小时</span>是算法测试</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div>
+          <div class="eyebrow">第一小时（凌晨 12:01–1:00）</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>提醒你最亲近的 <strong>5–15 位支持者</strong> — 真正会参与的人</li>
+            <li>这些是朋友、客户、顾问 — <strong>不是随机粉丝</strong></li>
+            <li>让他们评论，不只是点赞 — 评论放大信号</li>
+            <li><strong>立即</strong>发布你的 Maker 首条评论</li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">当天剩余时间（凌晨 1:00 – 午夜）</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>分批推广</strong> — 邮件、Twitter、邮件列表、社区在不同时间发出</li>
+            <li>一次性全推会造成爆发后沉寂 — <strong>算法不喜欢</strong></li>
+            <li>发布发布进展更新来重新激活你的网络</li>
+            <li>全天持续<strong>回复每一条评论</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box"><strong>速度 &gt; 数量。</strong>第一小时 20 个真实点赞，胜过晚上 6 点的 100 个。</div>
+    </div>
   </div>
 
   <!-- ══ SLIDE 14 ══ -->
-  <div class="slide" data-notes="Comments are where the PH community decides whether your product is worth their attention. A founder who responds to every comment within minutes signals that they care and are building in public. A founder who disappears after posting signals the opposite. Beyond the algorithm, every comment thread is a potential customer conversation — treat it like a live customer interview, not a marketing channel.">
-    <div class="slide-header"><span class="slide-num">14 — Comments Are the Conversation</span><div class="slide-num-line"></div></div>
-    <h2>Comments Are Where <span class="orange-accent">Trust Compounds</span></h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
-      <div>
-        <ul class="bullets" style="margin-top:0">
-          <li>Reply to <strong>every comment within the hour</strong> — speed signals you're present</li>
-          <li>Be <strong>human and generous</strong> — thank critics, not just fans</li>
-          <li>Add substance — a one-word reply is worse than no reply</li>
-          <li>Comment threads are <strong>live customer interviews</strong> — mine them</li>
-        </ul>
-
-        <div class="highlight-box" style="margin-top:20px">
-          <strong>Engagement depth</strong> is a direct ranking signal. A 10-comment thread beats 50 upvotes in the algorithm.
+  <div class="slide" data-notes="PH's community guidelines explicitly prohibit asking for upvotes. The phrase 'please upvote us' is the fastest way to get your launch flagged or downranked. The correct language is informative: 'We just launched on Product Hunt — here's the link.' Let people make their own decision. Interestingly, this approach actually converts better because it doesn't feel like an ask — it feels like news." data-notes-zh="PH 的社区准则明确禁止要求点赞。'请为我们点赞'这句话是让发布被标记或降权最快的方式。正确的语言是信息性的：'我们刚刚在 Product Hunt 上发布了——这是链接。'让人们自己决定。有趣的是，这种方式实际上转化得更好，因为它感觉像新闻，而非请求。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">14 — Ask Without Breaking Rules</span><span class="sn-zh">14 — 邀请而不违规</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>How to Ask Without <span class="orange-accent">Getting Flagged</span></h2>
+      <div class="do-dont" style="margin-top:28px">
+        <div class="do-dont-col dont-col">
+          <div class="do-dont-head dont">✗ Banned Language</div>
+          <div class="do-dont-item">"Please upvote us on Product Hunt!"</div>
+          <div class="do-dont-item">"Help us get #1 — every upvote counts!"</div>
+          <div class="do-dont-item">"Vote for us so we can win today"</div>
+          <div class="do-dont-item">"If you like this, make sure to upvote"</div>
+        </div>
+        <div class="do-dont-col do-col">
+          <div class="do-dont-head do">✓ Compliant Language</div>
+          <div class="do-dont-item">"We just launched on Product Hunt today"</div>
+          <div class="do-dont-item">"We're live — here's the link if you want to check it out"</div>
+          <div class="do-dont-item">"Would love your thoughts on our PH listing"</div>
+          <div class="do-dont-item">"We launched [product] — feedback welcome!"</div>
         </div>
       </div>
-      <div style="background:var(--navy-mid); border-radius:12px; padding:22px; border:1px solid var(--navy-light)">
-        <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:16px">Response Formula</div>
-        <div style="display:flex; flex-direction:column; gap:12px">
-          <div style="border-left:3px solid var(--accent-teal); padding-left:12px">
-            <div style="font-size:12px; font-weight:700; color:var(--accent-teal); margin-bottom:3px">Praise</div>
-            <div style="font-size:12px; color:var(--gray-light)">Thank them + ask what specific feature stood out</div>
-          </div>
-          <div style="border-left:3px solid var(--accent-gold); padding-left:12px">
-            <div style="font-size:12px; font-weight:700; color:var(--accent-gold); margin-bottom:3px">Criticism</div>
-            <div style="font-size:12px; color:var(--gray-light)">Acknowledge it genuinely + share what's on the roadmap</div>
-          </div>
-          <div style="border-left:3px solid var(--orange); padding-left:12px">
-            <div style="font-size:12px; font-weight:700; color:var(--orange); margin-bottom:3px">Question</div>
-            <div style="font-size:12px; color:var(--gray-light)">Answer fully + invite them to try it and share back</div>
-          </div>
-          <div style="border-left:3px solid var(--gray-mid); padding-left:12px">
-            <div style="font-size:12px; font-weight:700; color:var(--gray-light); margin-bottom:3px">Feature request</div>
-            <div style="font-size:12px; color:var(--gray-light)">"Adding this to the list — thanks for the detail"</div>
-          </div>
+      <ul class="bullets" style="margin-top:24px">
+        <li>PH detects patterns in outreach — <strong>vote rings are penalized</strong>, not just ignored</li>
+        <li>Informative framing converts as well or better — it <strong>feels like news, not a pitch</strong></li>
+      </ul>
+    </div>
+    <div class="lang-zh">
+      <h2>如何邀请而<span class="orange-accent">不被标记</span></h2>
+      <div class="do-dont" style="margin-top:28px">
+        <div class="do-dont-col dont-col">
+          <div class="do-dont-head dont">✗ 禁止语言</div>
+          <div class="do-dont-item">"请在 Product Hunt 上给我们点赞！"</div>
+          <div class="do-dont-item">"帮我们拿第一 — 每一票都很重要！"</div>
+          <div class="do-dont-item">"投票给我们，让我们赢得今天的比赛"</div>
+          <div class="do-dont-item">"如果你喜欢这个，记得点赞"</div>
+        </div>
+        <div class="do-dont-col do-col">
+          <div class="do-dont-head do">✓ 合规语言</div>
+          <div class="do-dont-item">"我们今天在 Product Hunt 上发布了"</div>
+          <div class="do-dont-item">"我们上线了——如果感兴趣欢迎来看看"</div>
+          <div class="do-dont-item">"很想听听你对我们 PH 产品页的看法"</div>
+          <div class="do-dont-item">"我们发布了 [产品] — 欢迎提出反馈！"</div>
         </div>
       </div>
+      <ul class="bullets" style="margin-top:24px">
+        <li>PH 能识别推广模式 — <strong>刷票圈会被处罚</strong>，不只是忽略</li>
+        <li>告知性措辞同样有效甚至更好 — 它<strong>感觉像新闻，而非推销</strong></li>
+      </ul>
     </div>
   </div>
 
   <!-- ══ SLIDE 15 ══ -->
-  <div class="slide" data-notes="Most founders disappear after launch day — this is a mistake. The 48-hour window is when your PH listing is still getting long-tail traffic and is easy to find. Use this time to capture emails, thank your supporters publicly (this generates goodwill and social proof), and share your results honestly — transparency about your ranking builds trust even if you didn't hit #1. The badge and SEO value compound for months.">
-    <div class="slide-header"><span class="slide-num">15 — Post-Launch</span><div class="slide-num-line"></div></div>
-    <h2>The Launch Doesn't End at <span class="orange-accent">Midnight</span></h2>
-
-    <div class="cards cards-2" style="margin-top:24px">
-      <div>
-        <div class="eyebrow">First 48 Hours</div>
-        <ul class="bullets" style="margin-top:0">
-          <li><strong>Thank your supporters</strong> publicly — a tweet, a LinkedIn post, an email</li>
-          <li><strong>Capture visitor emails</strong> — add a targeted offer for PH traffic on your homepage</li>
-          <li><strong>Share results transparently</strong> — your ranking, signups, feedback received</li>
-          <li>Respond to any <strong>late comments</strong> — PH traffic trickles for 48+ hours</li>
-        </ul>
-      </div>
-      <div>
-        <div class="eyebrow">Long Tail (Weeks & Months)</div>
-        <ul class="bullets" style="margin-top:0">
-          <li><strong>Embed the PH badge</strong> on your homepage and landing pages</li>
-          <li>The DA 91 backlink is <strong>permanent SEO value</strong> — keep your listing accurate</li>
-          <li>Repurpose <strong>positive PH comments</strong> as testimonials</li>
-          <li>Use your PH ranking in <strong>investor decks and press pitches</strong></li>
-        </ul>
+  <div class="slide" data-notes="Comments are where the PH community decides whether your product is worth their attention. A founder who responds to every comment within minutes signals that they care and are building in public. A founder who disappears after posting signals the opposite. Beyond the algorithm, every comment thread is a potential customer conversation — treat it like a live customer interview, not a marketing channel." data-notes-zh="评论是 PH 社区决定你的产品是否值得关注的地方。在几分钟内回复每条评论的创始人表明他们在乎。发帖后消失的创始人则表明相反。除了算法，每个评论线程都是潜在的客户对话——把它当作实时客户访谈，而非营销渠道。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">15 — Comments Are the Conversation</span><span class="sn-zh">15 — 评论即对话</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Comments Are Where <span class="orange-accent">Trust Compounds</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div>
+          <ul class="bullets" style="margin-top:0">
+            <li>Reply to <strong>every comment within the hour</strong> — speed signals you're present</li>
+            <li>Be <strong>human and generous</strong> — thank critics, not just fans</li>
+            <li>Add substance — a one-word reply is worse than no reply</li>
+            <li>Comment threads are <strong>live customer interviews</strong> — mine them</li>
+          </ul>
+          <div class="highlight-box" style="margin-top:20px"><strong>Engagement depth</strong> is a direct ranking signal. A 10-comment thread beats 50 upvotes in the algorithm.</div>
+        </div>
+        <div style="background:var(--navy-mid); border-radius:12px; padding:22px; border:1px solid var(--navy-light)">
+          <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:16px">Response Formula</div>
+          <div style="display:flex; flex-direction:column; gap:12px">
+            <div style="border-left:3px solid var(--accent-teal); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--accent-teal); margin-bottom:3px">Praise</div><div style="font-size:12px; color:var(--gray-light)">Thank them + ask what specific feature stood out</div></div>
+            <div style="border-left:3px solid var(--accent-gold); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--accent-gold); margin-bottom:3px">Criticism</div><div style="font-size:12px; color:var(--gray-light)">Acknowledge it genuinely + share what's on the roadmap</div></div>
+            <div style="border-left:3px solid var(--orange); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--orange); margin-bottom:3px">Question</div><div style="font-size:12px; color:var(--gray-light)">Answer fully + invite them to try it and share back</div></div>
+            <div style="border-left:3px solid var(--gray-mid); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--gray-light); margin-bottom:3px">Feature request</div><div style="font-size:12px; color:var(--gray-light)">"Adding this to the list — thanks for the detail"</div></div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="highlight-box">
-      <strong>"Launched and disappeared"</strong> is the most common post-launch mistake. The follow-through is where most of the value is extracted.
+    <div class="lang-zh">
+      <h2>评论是<span class="orange-accent">信任积累</span>的地方</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px">
+        <div>
+          <ul class="bullets" style="margin-top:0">
+            <li>在<strong>一小时内回复每一条评论</strong> — 速度表明你在场</li>
+            <li>真诚而慷慨 — <strong>感谢批评者</strong>，不只是支持者</li>
+            <li>增加实质内容 — 一个字的回复还不如不回复</li>
+            <li>评论串是<strong>实时用户访谈</strong> — 从中挖掘信息</li>
+          </ul>
+          <div class="highlight-box" style="margin-top:20px"><strong>互动深度</strong>是直接的排名信号。10条有深度的评论胜过算法中的 50 个点赞。</div>
+        </div>
+        <div style="background:var(--navy-mid); border-radius:12px; padding:22px; border:1px solid var(--navy-light)">
+          <div style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); margin-bottom:16px">回复公式</div>
+          <div style="display:flex; flex-direction:column; gap:12px">
+            <div style="border-left:3px solid var(--accent-teal); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--accent-teal); margin-bottom:3px">表扬</div><div style="font-size:12px; color:var(--gray-light)">感谢 + 追问哪个功能最打动他们</div></div>
+            <div style="border-left:3px solid var(--accent-gold); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--accent-gold); margin-bottom:3px">批评</div><div style="font-size:12px; color:var(--gray-light)">真诚承认 + 分享路线图上的计划</div></div>
+            <div style="border-left:3px solid var(--orange); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--orange); margin-bottom:3px">问题</div><div style="font-size:12px; color:var(--gray-light)">完整回答 + 邀请他们试用并反馈</div></div>
+            <div style="border-left:3px solid var(--gray-mid); padding-left:12px"><div style="font-size:12px; font-weight:700; color:var(--gray-light); margin-bottom:3px">功能需求</div><div style="font-size:12px; color:var(--gray-light)">"已记录到需求列表 — 感谢你的详细说明"</div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ══ SLIDE 16 ══ -->
-  <div class="slide" data-notes="Vote rings are the most dangerous mistake — PH has sophisticated detection and will quietly downrank or remove your listing without warning. A half-finished product is the second most common error: PH traffic is brutally honest and a rough product will be said so in the comments, which can permanently damage your brand with early adopters. Bad timing (Friday launch) and ignoring comments are fixable but costly.">
-    <div class="slide-header"><span class="slide-num">16 — Common Mistakes</span><div class="slide-num-line"></div></div>
-    <h2>The Mistakes That <span class="orange-accent">Kill Launches</span></h2>
-
-    <table class="data-table" style="margin-top:24px">
-      <thead>
-        <tr>
-          <th>Mistake</th>
-          <th>Why it hurts</th>
-          <th>Risk Level</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Vote rings / coordinated upvoting</strong></td>
-          <td>PH detects it — listing gets downranked or removed silently</td>
-          <td><span class="tag tag-orange">Critical</span></td>
-        </tr>
-        <tr>
-          <td><strong>Launching a half-finished product</strong></td>
-          <td>PH community is brutally honest — bad comments compound and damage brand</td>
-          <td><span class="tag tag-orange">High</span></td>
-        </tr>
-        <tr>
-          <td><strong>Ignoring comments on launch day</strong></td>
-          <td>Kills engagement signal; community reads it as founder not caring</td>
-          <td><span class="tag tag-orange">High</span></td>
-        </tr>
-        <tr>
-          <td><strong>Bad timing (Friday / weekend)</strong></td>
-          <td>Lower traffic, less editorial attention, weaker audience quality</td>
-          <td><span class="tag tag-gold">Medium</span></td>
-        </tr>
-        <tr>
-          <td><strong>Over-promising in the tagline</strong></td>
-          <td>Sets expectations that can't be met — negative comments follow</td>
-          <td><span class="tag tag-gold">Medium</span></td>
-        </tr>
-        <tr>
-          <td><strong>"Launched and disappeared"</strong></td>
-          <td>Misses 48-hour long tail traffic and all post-launch value extraction</td>
-          <td><span class="tag tag-gold">Medium</span></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="slide" data-notes="Most founders disappear after launch day — this is a mistake. The 48-hour window is when your PH listing is still getting long-tail traffic and is easy to find. Use this time to capture emails, thank your supporters publicly (this generates goodwill and social proof), and share your results honestly — transparency about your ranking builds trust even if you didn't hit #1. The badge and SEO value compound for months." data-notes-zh="大多数创始人在发布日后消失——这是个错误。48小时窗口是你的 PH 产品页仍在获得长尾流量且容易被发现的时候。利用这段时间捕获邮件，公开感谢支持者，并诚实分享结果——关于排名的透明度建立信任，即使你没有达到第一名。徽章和 SEO 价值在几个月内持续复利。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">16 — Post-Launch</span><span class="sn-zh">16 — 发布后</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>The Launch Doesn't End at <span class="orange-accent">Midnight</span></h2>
+      <div class="cards cards-2" style="margin-top:24px">
+        <div>
+          <div class="eyebrow">First 48 Hours</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>Thank your supporters</strong> publicly — a tweet, a LinkedIn post, an email</li>
+            <li><strong>Capture visitor emails</strong> — add a targeted offer for PH traffic on your homepage</li>
+            <li><strong>Share results transparently</strong> — your ranking, signups, feedback received</li>
+            <li>Respond to any <strong>late comments</strong> — PH traffic trickles for 48+ hours</li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">Long Tail (Weeks &amp; Months)</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>Embed the PH badge</strong> on your homepage and landing pages</li>
+            <li>The DA 91 backlink is <strong>permanent SEO value</strong> — keep your listing accurate</li>
+            <li>Repurpose <strong>positive PH comments</strong> as testimonials</li>
+            <li>Use your PH ranking in <strong>investor decks and press pitches</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box"><strong>"Launched and disappeared"</strong> is the most common post-launch mistake. The follow-through is where most of the value is extracted.</div>
+    </div>
+    <div class="lang-zh">
+      <h2>发布不会在<span class="orange-accent">午夜</span>结束</h2>
+      <div class="cards cards-2" style="margin-top:24px">
+        <div>
+          <div class="eyebrow">前 48 小时</div>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>公开感谢支持者</strong> — 一条推文、一篇 LinkedIn 帖子、一封邮件</li>
+            <li><strong>捕获访客邮件</strong> — 为 PH 流量添加专属优惠</li>
+            <li><strong>透明分享结果</strong> — 你的排名、注册数、收到的反馈</li>
+            <li>回复任何<strong>迟来的评论</strong> — PH 流量持续 48 小时以上</li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow">长尾效应（数周、数月后）</div>
+          <ul class="bullets" style="margin-top:0">
+            <li>在主页<strong>嵌入 PH 徽章</strong>和落地页</li>
+            <li>DA 91 外链是<strong>永久 SEO 价值</strong> — 保持产品页信息准确</li>
+            <li>将优质 PH 评论转化为<strong>用户见证</strong></li>
+            <li>在<strong>投资人 PPT 和媒体简报</strong>中使用 PH 排名</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box"><strong>"发布后消失"</strong>是最常见的发布后错误。价值的兑现恰恰在于后续的坚持。</div>
+    </div>
   </div>
 
   <!-- ══ SLIDE 17 ══ -->
-  <div class="slide" data-notes="This checklist is the takeaway students should screenshot or save. Pre-launch sets the foundation, launch day is about execution and engagement, and post-launch extracts the compounding value. Every item here has been covered in the lesson — this slide should feel like a familiar recap, not new information. Encourage students to work backwards from their target launch date to schedule the pre-launch activities.">
-    <div class="slide-header"><span class="slide-num">17 — Checklist Recap</span><div class="slide-num-line"></div></div>
-    <h2>Your <span class="orange-accent">Launch Checklist</span></h2>
+  <div class="slide" data-notes="Vote rings are the most dangerous mistake — PH has sophisticated detection and will quietly downrank or remove your listing without warning. A half-finished product is the second most common error: PH traffic is brutally honest and a rough product will be said so in the comments, which can permanently damage your brand with early adopters. Bad timing (Friday launch) and ignoring comments are fixable but costly." data-notes-zh="刷票圈是最危险的错误——PH 有复杂的检测系统，会在没有警告的情况下悄悄降权或删除你的产品页。半成品是第二常见的错误：PH 流量非常诚实，粗糙的产品会在评论中被直说，这可能永久损害你在早期用户中的品牌。糟糕的时机和忽略评论是可以纠正的但代价高昂。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">17 — Common Mistakes</span><span class="sn-zh">17 — 常见错误</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>The Mistakes That <span class="orange-accent">Kill Launches</span></h2>
+      <table class="data-table" style="margin-top:24px">
+        <thead><tr><th>Mistake</th><th>Why it hurts</th><th>Risk Level</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Vote rings / coordinated upvoting</strong></td><td>PH detects it — listing gets downranked or removed silently</td><td><span class="tag tag-orange">Critical</span></td></tr>
+          <tr><td><strong>Launching a half-finished product</strong></td><td>PH community is brutally honest — bad comments compound and damage brand</td><td><span class="tag tag-orange">High</span></td></tr>
+          <tr><td><strong>Ignoring comments on launch day</strong></td><td>Kills engagement signal; community reads it as founder not caring</td><td><span class="tag tag-orange">High</span></td></tr>
+          <tr><td><strong>Bad timing (Friday / weekend)</strong></td><td>Lower traffic, less editorial attention, weaker audience quality</td><td><span class="tag tag-gold">Medium</span></td></tr>
+          <tr><td><strong>Over-promising in the tagline</strong></td><td>Sets expectations that can't be met — negative comments follow</td><td><span class="tag tag-gold">Medium</span></td></tr>
+          <tr><td><strong>"Launched and disappeared"</strong></td><td>Misses 48-hour long tail traffic and all post-launch value extraction</td><td><span class="tag tag-gold">Medium</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="lang-zh">
+      <h2>那些会<span class="orange-accent">毁掉发布</span>的错误</h2>
+      <table class="data-table" style="margin-top:24px">
+        <thead><tr><th>错误</th><th>为何有害</th><th>风险等级</th></tr></thead>
+        <tbody>
+          <tr><td><strong>刷票圈 / 协调投票</strong></td><td>PH 能识别 — 产品页被悄悄降权或删除</td><td><span class="tag tag-orange">严重</span></td></tr>
+          <tr><td><strong>发布未完成的产品</strong></td><td>PH 社区极其诚实 — 差评会累积并损害品牌</td><td><span class="tag tag-orange">高</span></td></tr>
+          <tr><td><strong>发布日忽略评论</strong></td><td>扼杀互动信号；社区认为创始人不在乎</td><td><span class="tag tag-orange">高</span></td></tr>
+          <tr><td><strong>时机选择差（周五/周末）</strong></td><td>流量低，编辑关注少，受众质量差</td><td><span class="tag tag-gold">中</span></td></tr>
+          <tr><td><strong>在标语中过度承诺</strong></td><td>设置无法实现的预期 — 随之而来的是负面评论</td><td><span class="tag tag-gold">中</span></td></tr>
+          <tr><td><strong>"发布后消失"</strong></td><td>错过 48 小时长尾流量和所有发布后价值</td><td><span class="tag tag-gold">中</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <div class="checklist">
-      <div class="check-group">
-        <div class="check-group-title orange">Pre-Launch</div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Thumbnail, tagline, gallery, demo video finalized</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Upcoming page live, notify-me list growing</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Hunter contacted (if using one) 2+ weeks out</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Twitter, LinkedIn, newsletter, communities warmed up</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Inner circle briefed and ready to engage</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Maker first comment drafted</div></div>
+  <!-- ══ SLIDE 18 ══ -->
+  <div class="slide" data-notes="This checklist is the takeaway students should screenshot or save. Pre-launch sets the foundation, launch day is about execution and engagement, and post-launch extracts the compounding value. Every item here has been covered in the lesson — this slide should feel like a familiar recap, not new information. Encourage students to work backwards from their target launch date to schedule the pre-launch activities." data-notes-zh="这份清单是学员应该截图或保存的要点。发布前奠定基础，发布日专注执行和互动，发布后提取复利价值。这里的每一项都在课程中覆盖过了——这张幻灯片应该感觉像熟悉的回顾，而非新信息。鼓励学员从目标发布日倒推时间安排预发布活动。">
+    <div class="slide-header"><span class="slide-num"><span class="sn-en">18 — Checklist Recap</span><span class="sn-zh">18 — 清单总结</span></span><div class="slide-num-line"></div></div>
+    <div class="lang-en">
+      <h2>Your <span class="orange-accent">Launch Checklist</span></h2>
+      <div class="checklist">
+        <div class="check-group">
+          <div class="check-group-title orange">Pre-Launch</div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Thumbnail, tagline, gallery, demo video finalized</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Upcoming page live, notify-me list growing</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Hunter contacted (if using one) 2+ weeks out</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Twitter, LinkedIn, newsletter, communities warmed up</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Inner circle briefed and ready to engage</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Maker first comment drafted</div></div>
+        </div>
+        <div class="check-group">
+          <div class="check-group-title teal">Launch Day</div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Go live at 12:01am PST (Tue–Thu)</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Post maker first comment immediately</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Alert inner circle in first hour</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Reply to every comment within the hour</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Stagger outreach through the day</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">No "please upvote" language anywhere</div></div>
+        </div>
+        <div class="check-group">
+          <div class="check-group-title gold">Post-Launch</div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Thank supporters publicly (48h window)</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Capture visitor emails with targeted offer</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Share results transparently</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Embed PH badge on homepage</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Repurpose best comments as testimonials</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Add ranking to investor deck / press kit</div></div>
+        </div>
       </div>
-      <div class="check-group">
-        <div class="check-group-title teal">Launch Day</div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Go live at 12:01am PST (Tue–Thu)</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Post maker first comment immediately</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Alert inner circle in first hour</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Reply to every comment within the hour</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Stagger outreach through the day</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">No "please upvote" language anywhere</div></div>
-      </div>
-      <div class="check-group">
-        <div class="check-group-title gold">Post-Launch</div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Thank supporters publicly (48h window)</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Capture visitor emails with targeted offer</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Share results transparently</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Embed PH badge on homepage</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Repurpose best comments as testimonials</div></div>
-        <div class="check-item"><div class="check-box"></div><div class="check-text">Add ranking to investor deck / press kit</div></div>
+    </div>
+    <div class="lang-zh">
+      <h2>你的<span class="orange-accent">发布清单</span></h2>
+      <div class="checklist">
+        <div class="check-group">
+          <div class="check-group-title orange">发布前</div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">缩略图、标语、图库、演示视频已就绪</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Upcoming 页面上线，通知订阅持续增长</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Hunter 已联系（如使用）提前 2+ 周</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Twitter、LinkedIn、邮件列表、社区已预热</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">内圈支持者已就位</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">Maker 首条评论已起草</div></div>
+        </div>
+        <div class="check-group">
+          <div class="check-group-title teal">发布日</div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">PST 凌晨 12:01 上线（周二至周四）</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">立即发布 Maker 首条评论</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">第一小时提醒内圈支持者</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">在一小时内回复每一条评论</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">全天分批推广</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">任何地方不使用"请点赞"语言</div></div>
+        </div>
+        <div class="check-group">
+          <div class="check-group-title gold">发布后</div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">公开感谢支持者（48小时内）</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">用专属优惠捕获访客邮件</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">透明分享发布结果</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">在主页嵌入 PH 徽章</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">将最佳评论转化为用户见证</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text">将排名加入投资人 PPT / 媒体资料</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -996,13 +1279,35 @@
 <!-- Speaker Notes -->
 <button class="notes-toggle" id="notesToggle" onclick="toggleNotes()">Speaker Notes</button>
 <div class="notes-panel" id="notesPanel">
-  <strong>Notes:</strong> <span id="notesText"></span>
+  <strong id="notesLabel">Notes:</strong> <span id="notesText"></span>
 </div>
 
 <script>
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
   let current = 0;
+  let currentLang = 'en';
+
+  function updateNotes(idx) {
+    const slide = slides[idx];
+    const attr = currentLang === 'zh' ? 'data-notes-zh' : 'data-notes';
+    const notes = slide.getAttribute(attr) || slide.getAttribute('data-notes') || '';
+    document.getElementById('notesText').textContent = notes;
+  }
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.body.classList.toggle('zh', lang === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    updateNotes(current);
+    const panel = document.getElementById('notesPanel');
+    if (panel.classList.contains('open')) {
+      document.getElementById('notesLabel').textContent = lang === 'zh' ? '注释：' : 'Notes:';
+      const btn = document.getElementById('notesToggle');
+      btn.textContent = lang === 'zh' ? '隐藏注释' : 'Hide Notes';
+    }
+  }
 
   function showSlide(idx) {
     slides.forEach((s, i) => {
@@ -1019,15 +1324,11 @@
     });
     slides[idx].style.transform = '';
     slides[idx].style.opacity = '';
-
     document.getElementById('cur').textContent = idx + 1;
     document.getElementById('progress').style.width = ((idx + 1) / total * 100) + '%';
     document.getElementById('prev').disabled = idx === 0;
     document.getElementById('next').disabled = idx === total - 1;
-
-    // Update speaker notes
-    const notes = slides[idx].getAttribute('data-notes') || '';
-    document.getElementById('notesText').textContent = notes;
+    updateNotes(idx);
   }
 
   function navigate(dir) {
@@ -1062,16 +1363,18 @@
     document.getElementById('progress').style.width = ((current + 1) / total * 100) + '%';
     document.getElementById('prev').disabled = current === 0;
     document.getElementById('next').disabled = current === total - 1;
-
-    const notes = slides[current].getAttribute('data-notes') || '';
-    document.getElementById('notesText').textContent = notes;
+    updateNotes(current);
   }
 
   function toggleNotes() {
     const panel = document.getElementById('notesPanel');
     const btn = document.getElementById('notesToggle');
     panel.classList.toggle('open');
-    btn.textContent = panel.classList.contains('open') ? 'Hide Notes' : 'Speaker Notes';
+    const isOpen = panel.classList.contains('open');
+    document.getElementById('notesLabel').textContent = currentLang === 'zh' ? '注释：' : 'Notes:';
+    btn.textContent = isOpen
+      ? (currentLang === 'zh' ? '隐藏注释' : 'Hide Notes')
+      : (currentLang === 'zh' ? '讲师注释' : 'Speaker Notes');
   }
 
   // Keyboard nav
