@@ -475,9 +475,192 @@
   .check-item:hover { opacity: 0.85; }
   .check-item.done .check-num { background: var(--accent-teal); color: var(--navy-dark); }
   .check-item.done .check-text { text-decoration: line-through; color: var(--gray-mid); }
+
+  /* ─── CHECKLIST COVER ─── */
+  #checklist-cover {
+    position: fixed; inset: 0; z-index: 600;
+    background: var(--navy-dark);
+    display: flex; flex-direction: column;
+    padding: 28px 44px 24px;
+    overflow-y: auto;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  #checklist-cover.hidden {
+    opacity: 0; transform: translateY(-14px); pointer-events: none;
+  }
+  /* header row: title left, controls right */
+  .cl-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 24px; flex-shrink: 0;
+  }
+  .cl-header-left { display: flex; flex-direction: column; gap: 4px; }
+  .cl-header-right {
+    display: flex; align-items: center; gap: 16px; padding-top: 2px;
+  }
+  .cl-logo { height: 26px; opacity: 0.55; flex-shrink: 0; }
+  /* lang buttons inside cover */
+  .cl-lang {
+    display: flex; gap: 4px;
+    background: var(--navy-mid); border: 1px solid var(--navy-light);
+    border-radius: 8px; padding: 3px;
+  }
+  .cl-lang button {
+    padding: 4px 12px; border-radius: 6px; border: none;
+    background: transparent; color: var(--gray-mid);
+    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+    cursor: pointer; transition: background 0.15s, color 0.15s;
+  }
+  .cl-lang button.active { background: var(--orange); color: var(--white); }
+  .cl-title {
+    font-family: 'Syne', sans-serif; font-size: 21px; font-weight: 800;
+    color: var(--white); letter-spacing: -0.3px;
+  }
+  .cl-subtitle { font-size: 12px; color: var(--gray-mid); }
+  /* three-column grid */
+  .cl-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px; flex: 1; min-height: 0;
+  }
+  .cl-group {
+    background: var(--navy-mid); border-radius: 12px;
+    border: 1px solid var(--navy-light); padding: 18px 16px;
+    display: flex; flex-direction: column;
+  }
+  .cl-group-title {
+    font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--navy-light);
+  }
+  .cl-group-title.orange { color: var(--orange); }
+  .cl-group-title.teal   { color: var(--accent-teal); }
+  .cl-group-title.gold   { color: var(--accent-gold); }
+  /* item row: [num] [checkbox] [text] */
+  #checklist-cover .check-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    cursor: pointer; transition: opacity 0.15s; user-select: none;
+  }
+  #checklist-cover .check-item:last-child { border-bottom: none; }
+  #checklist-cover .check-item:hover { opacity: 0.8; }
+  /* visible checkbox square */
+  .cl-checkbox {
+    width: 15px; height: 15px; flex-shrink: 0;
+    border: 1.5px solid var(--navy-light); border-radius: 3px;
+    position: relative; transition: background 0.2s, border-color 0.2s;
+  }
+  #checklist-cover .check-item.done .cl-checkbox {
+    background: var(--accent-teal); border-color: var(--accent-teal);
+  }
+  #checklist-cover .check-item.done .cl-checkbox::after {
+    content: '';
+    position: absolute; left: 3px; top: 0px;
+    width: 5px; height: 9px;
+    border-right: 2px solid var(--navy-dark);
+    border-bottom: 2px solid var(--navy-dark);
+    transform: rotate(45deg);
+  }
+  #checklist-cover .check-text {
+    font-size: 12px; color: var(--gray-light); line-height: 1.3; flex: 1;
+  }
+  #checklist-cover .check-item.done .check-text {
+    text-decoration: line-through; color: var(--gray-mid);
+  }
+  .cl-footer {
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 20px; flex-shrink: 0;
+  }
+  .cl-start-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 11px 36px; background: var(--orange);
+    color: var(--white); border: none; border-radius: 10px;
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    letter-spacing: 0.5px; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cl-start-btn:hover { background: var(--orange-light); transform: translateY(-1px); }
+  #cl-back-btn {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: none; align-items: center; gap: 6px;
+    padding: 6px 16px; background: rgba(13,20,40,0.85);
+    border: 1px solid var(--navy-light); border-radius: 20px;
+    color: var(--gray-mid); font-family: 'Syne', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; cursor: pointer; z-index: 200;
+    backdrop-filter: blur(8px); transition: border-color 0.2s, color 0.2s;
+  }
+  #cl-back-btn:hover { border-color: var(--orange); color: var(--orange); }
+  #cl-back-btn.visible { display: flex; }
 </style>
 </head>
 <body>
+
+<!-- ══ CHECKLIST COVER ══ -->
+<div id="checklist-cover">
+
+  <div class="cl-header">
+    <div class="cl-header-left">
+      <div class="cl-title lang-en">Your Product Hunt Launch Checklist</div>
+      <div class="cl-title lang-zh">Product Hunt 发布清单</div>
+      <div class="cl-subtitle lang-en">Click any item to check it off — then start the presentation.</div>
+      <div class="cl-subtitle lang-zh">点击任意条目打勾，然后开始演示。</div>
+    </div>
+    <div class="cl-header-right">
+      <div class="cl-lang">
+        <button id="cl-btn-en" class="active" onclick="setLang('en');syncCoverLang('en')">EN</button>
+        <button id="cl-btn-zh" onclick="setLang('zh');syncCoverLang('zh')">中文</button>
+      </div>
+      <img src="beebee-logo.png" alt="BeeBee AI" class="cl-logo">
+    </div>
+  </div>
+
+  <div class="cl-grid">
+
+    <!-- Pre-Launch -->
+    <div class="cl-group">
+      <div class="cl-group-title orange lang-en">① Pre-Launch</div>
+      <div class="cl-group-title orange lang-zh">① 发布前</div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Thumbnail, tagline, gallery &amp; demo video finalized</div><div class="check-text lang-zh">缩略图、标语、图库、演示视频已就绪</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Upcoming page live — notify-me list growing</div><div class="check-text lang-zh">Upcoming 页面上线，通知订阅持续增长</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Hunter contacted 2+ weeks out (if using one)</div><div class="check-text lang-zh">Hunter 已提前 2+ 周联系（如使用）</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Twitter, LinkedIn, newsletter &amp; communities warmed up</div><div class="check-text lang-zh">Twitter、LinkedIn、邮件列表、社区已预热</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Inner circle briefed and ready to engage</div><div class="check-text lang-zh">内圈支持者已就位，准备互动</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Maker first comment drafted and ready to post</div><div class="check-text lang-zh">Maker 首条评论已起草，准备发布</div></div>
+    </div>
+
+    <!-- Launch Day -->
+    <div class="cl-group">
+      <div class="cl-group-title teal lang-en">② Launch Day</div>
+      <div class="cl-group-title teal lang-zh">② 发布日</div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Go live at 12:01 am PST — Tuesday, Wednesday or Thursday</div><div class="check-text lang-zh">PST 凌晨 12:01 上线（周二、三或四）</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Post maker first comment immediately at launch</div><div class="check-text lang-zh">发布后立即发布 Maker 首条评论</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Alert inner circle in the first hour</div><div class="check-text lang-zh">第一小时内提醒内圈支持者</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Reply to every comment — within the hour, all day</div><div class="check-text lang-zh">全天内每条评论都在一小时内回复</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Stagger outreach — email, social, communities throughout the day</div><div class="check-text lang-zh">分批推广——邮件、社交、社区全天错开</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Never use "please upvote" — share the link, let people decide</div><div class="check-text lang-zh">绝不说"请点赞"——分享链接，让用户自己决定</div></div>
+    </div>
+
+    <!-- Post-Launch -->
+    <div class="cl-group">
+      <div class="cl-group-title gold lang-en">③ Post-Launch</div>
+      <div class="cl-group-title gold lang-zh">③ 发布后</div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Thank supporters publicly within the 48-hour window</div><div class="check-text lang-zh">48 小时内公开感谢支持者</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Capture visitor emails with a targeted launch offer</div><div class="check-text lang-zh">用专属发布优惠捕获访客邮件</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Share your results transparently — rank, votes, traffic</div><div class="check-text lang-zh">透明分享结果——排名、点赞数、流量</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Embed the PH badge on your homepage</div><div class="check-text lang-zh">在主页嵌入 PH 徽章</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Repurpose the best comments as social proof / testimonials</div><div class="check-text lang-zh">将最佳评论转化为社会证明与用户见证</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="cl-checkbox"></div><div class="check-text lang-en">Add your ranking to investor deck and press kit</div><div class="check-text lang-zh">将排名加入投资人 PPT 和媒体资料包</div></div>
+    </div>
+
+  </div>
+
+  <div class="cl-footer">
+    <button class="cl-start-btn" onclick="startPresentation()">▶&nbsp; Start Presentation</button>
+  </div>
+
+</div>
+
+<!-- Back-to-checklist pill (shows after cover is dismissed) -->
+<button id="cl-back-btn" onclick="showChecklist()">📋 Checklist</button>
 
 <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
 <div class="slide-counter"><span id="cur">1</span> / 21</div>
@@ -1528,9 +1711,6 @@
   <button class="nav-btn" id="next" onclick="navigate(1)">&#8594;</button>
 </div>
 
-<!-- BeeBee AI logo -->
-<img src="beebee-logo.png" alt="BeeBee AI" style="position:fixed; top:16px; left:20px; height:24px; width:auto; opacity:0.45; z-index:100; pointer-events:none;">
-
 <!-- Floating PH demo link — auto-appears on relevant slides -->
 <a id="ph-demo-link" href="#" target="_blank" rel="noopener">▶ Open Live Demo</a>
 
@@ -1551,6 +1731,21 @@
     const attr = currentLang === 'zh' ? 'data-notes-zh' : 'data-notes';
     const notes = slide.getAttribute(attr) || slide.getAttribute('data-notes') || '';
     document.getElementById('notesText').textContent = notes;
+  }
+
+  function syncCoverLang(lang) {
+    document.getElementById('cl-btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('cl-btn-zh').classList.toggle('active', lang === 'zh');
+  }
+
+  function startPresentation() {
+    document.getElementById('checklist-cover').classList.add('hidden');
+    document.getElementById('cl-back-btn').classList.add('visible');
+  }
+
+  function showChecklist() {
+    document.getElementById('checklist-cover').classList.remove('hidden');
+    document.getElementById('cl-back-btn').classList.remove('visible');
   }
 
   function doReveal(contentId, btnId) {
@@ -1672,7 +1867,7 @@
 
   // Initialize
   // Auto-number checklist items (1-6 per group) and enable click-to-check
-  document.querySelectorAll('.check-group').forEach(group => {
+  document.querySelectorAll('.check-group, .cl-group').forEach(group => {
     let n = 0;
     group.querySelectorAll('.check-item').forEach(item => {
       n++;
